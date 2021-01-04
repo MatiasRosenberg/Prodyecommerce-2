@@ -80,9 +80,9 @@ namespace ProdyEcommerce
 
         }
 
-        public void Llenarproductos(TextBox cajanombre, TextBox cajadetalle, TextBox cajatags, CheckedListBox listarubros, TextBox cajaidarticulo, CheckBox checkweb, CheckBox Checkvariable, CheckBox agrupar, ListBox lista1, ListBox lista2)
+        public void Llenarproductos(TextBox cajanombre, TextBox cajadetalle, TextBox cajatags, CheckedListBox listarubros, TextBox cajaidarticulo, TextBox cajaumedida, TextBox codequiv, TextBox cajapeso, TextBox cajaalto, TextBox cajaancho, CheckBox checkweb, CheckBox Checkvariable, CheckBox agrupar, ListBox lista1, ListBox lista2, TextBox Precios, ComboBox cbrubros, ComboBox cbsubrubros)
         {
-            cmd = new SqlCommand("Select nombre, idarticulo, WOO_DETALLE  from articulos where idarticulo='" + cajaidarticulo.Text + "'", cnn);
+            cmd = new SqlCommand("Select nombre, idarticulo, UniMedi, WOO_DETALLE, CodEquiv, Peso, isnull(Alto, 0) Alto, isnull(Ancho, 0) Ancho  from articulos where idarticulo='" + cajaidarticulo.Text + "'", cnn);
             SqlDataReader read = cmd.ExecuteReader();
             cmd = new SqlCommand("Select TAGS from ecomm_tags where idarticulo='" + cajaidarticulo.Text + "'", cnn);
             SqlDataReader read1 = cmd.ExecuteReader();
@@ -99,6 +99,24 @@ namespace ProdyEcommerce
             listarubros.DisplayMember = "Nombre";
             listarubros.ValueMember = "idRubro";
 
+            string Csqlrubros = "select idrubro, Nombre from rubros";
+            da = new SqlDataAdapter(Csqlrubros, cnn);
+            DataTable rubro = new DataTable();
+            da.Fill(rubro);
+
+            string Csqlsubrubros = "select idsubrubro, Nombre from subrubros";
+            da = new SqlDataAdapter(Csqlsubrubros, cnn);
+            DataTable subrubro = new DataTable();
+            da.Fill(subrubro);
+
+            //comborubros
+            cbrubros.DisplayMember = "Nombre";
+            cbrubros.ValueMember = "idrubro";
+            cbrubros.DataSource = rubro;
+
+            cbsubrubros.DisplayMember = "Nombre";
+            cbsubrubros.ValueMember = "idsubrubro";
+            cbsubrubros.DataSource = subrubro;
 
             string Csql = "select idarticulo, idrubro from rubrosarticulos where idarticulo ='" + cajaidarticulo.Text + "'";
             cmd = new SqlCommand(Csql, cnn);
@@ -112,6 +130,10 @@ namespace ProdyEcommerce
             string Csqllista = "select ARTICULOSJERARQUIAS.IDARTICULO as idarticulo, Articulos.Nombre as nombre from ARTICULOSJERARQUIAS left join articulos on ARTICULOSJERARQUIAS.IDARTICULO = Articulos.IdArticulo where ARTICULOSJERARQUIAS.IDARTICULOFATHER ='" + cajaidarticulo.Text + "'";
             cmd = new SqlCommand(Csqllista, cnn);
             SqlDataReader read4 = cmd.ExecuteReader();
+
+            string Csqlprecioecomm = "select precio from PRECIOS_ECOMMERCE";
+            cmd = new SqlCommand(Csqlprecioecomm, cnn);
+            SqlDataReader read5 = cmd.ExecuteReader();
 
             DataTable dtlista1 = new DataTable();
             string Csqllist = "select idarticulo, Nombre from articulos order by Nombre asc";
@@ -170,11 +192,21 @@ namespace ProdyEcommerce
             {
                 cajanombre.Text = read["nombre"].ToString();
                 cajadetalle.Text = read["WOO_DETALLE"].ToString();
+                cajaumedida.Text = read["UniMedi"].ToString();
+                codequiv.Text = read["CodEquiv"].ToString();
+                cajapeso.Text = read["Peso"].ToString();
+                cajaalto.Text = read["Alto"].ToString();
+                cajaancho.Text = read["Ancho"].ToString();
             }
             else
             {
                 cajanombre.Text = "";
                 cajadetalle.Text = "";
+                cajaumedida.Text = "";
+                codequiv.Text = "";
+                cajapeso.Text = "";
+                cajaalto.Text = "";
+                cajaancho.Text = "";
             }
 
             //tags
@@ -199,6 +231,15 @@ namespace ProdyEcommerce
                 checkweb.Checked = false;
                 Checkvariable.Checked = false;
                 agrupar.Checked = false;
+            }
+
+            if(read5.Read() == true)
+            {
+                Precios.Text = read5["Precio"].ToString();
+            }
+            else
+            {
+                Precios.Text = "";
             }
         }
 

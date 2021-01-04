@@ -78,7 +78,7 @@ namespace ProdyEcommerce
         {
             if (txtarticulo.Text == "")
             {
-                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2);
+                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
             }
@@ -86,7 +86,7 @@ namespace ProdyEcommerce
 
         private void txtnombre_TextChanged(object sender, EventArgs e)
         {
-            F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2);
+            F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro);
             txtarticulo.Enabled = false;
             txtnombre.Enabled = false;
         }
@@ -95,7 +95,7 @@ namespace ProdyEcommerce
         {
             if (txtnombre.Text == "")
             {
-                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2);
+                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
             }
@@ -171,7 +171,7 @@ namespace ProdyEcommerce
         {
             if (string.IsNullOrEmpty(txtarticulo.Text) == true)
             {
-                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2);
+                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
             }
@@ -254,6 +254,30 @@ namespace ProdyEcommerce
             listBox2.Enabled = true;
             txttags.Enabled = true;
             btngrabar.Enabled = true;
+        }
+
+        private void dtgridcodigo_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1)
+            {
+                return;
+            }
+            else
+            {
+                txtarticulo.Text = dtgridcodigo.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
+                txtnombre.Text = dtgridcodigo.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
+                txtcodigo.Text = dtgridcodigo.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
+                txtnombrecod.Text = dtgridcodigo.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
+            }
+        }
+
+        private void dtgridcodigo_SelectionChanged(object sender, EventArgs e)
+        {
+            var row = dtgridcodigo.CurrentRow;
+            txtcodigo.Text = row.Cells["Codigo"].Value.ToString();
+            txtnombrecod.Text = row.Cells["Nombre"].Value.ToString();
+            txtarticulo.Text = row.Cells["Codigo"].Value.ToString();
+            txtnombre.Text = row.Cells["Nombre"].Value.ToString();
         }
     }
 }

@@ -68,7 +68,6 @@
             this.Cbpvariable = new System.Windows.Forms.CheckBox();
             this.Cbpagrupado = new System.Windows.Forms.CheckBox();
             this.CBPulicar = new System.Windows.Forms.CheckBox();
-            this.btnlimpiar = new System.Windows.Forms.Button();
             this.lbltags = new System.Windows.Forms.Label();
             this.txttags = new System.Windows.Forms.TextBox();
             this.lblRubrosEco = new System.Windows.Forms.Label();
@@ -78,6 +77,7 @@
             this.txtnombre = new System.Windows.Forms.TextBox();
             this.txtarticulo = new System.Windows.Forms.TextBox();
             this.lblarticulo = new System.Windows.Forms.Label();
+            this.btnlimpiar = new System.Windows.Forms.Button();
             this.btnbuscar = new System.Windows.Forms.Button();
             this.btnmodificar = new System.Windows.Forms.Button();
             this.btnnuevo = new System.Windows.Forms.Button();
@@ -91,7 +91,7 @@
             // btngrabar
             // 
             this.btngrabar.BackColor = System.Drawing.Color.LightBlue;
-            this.btngrabar.Location = new System.Drawing.Point(586, 635);
+            this.btngrabar.Location = new System.Drawing.Point(523, 635);
             this.btngrabar.Name = "btngrabar";
             this.btngrabar.Size = new System.Drawing.Size(87, 32);
             this.btngrabar.TabIndex = 10;
@@ -102,7 +102,7 @@
             // btnsalir
             // 
             this.btnsalir.BackColor = System.Drawing.Color.LightBlue;
-            this.btnsalir.Location = new System.Drawing.Point(772, 634);
+            this.btnsalir.Location = new System.Drawing.Point(709, 634);
             this.btnsalir.Name = "btnsalir";
             this.btnsalir.Size = new System.Drawing.Size(87, 32);
             this.btnsalir.TabIndex = 11;
@@ -190,6 +190,8 @@
             this.dtgridcodigo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgridcodigo.Size = new System.Drawing.Size(936, 279);
             this.dtgridcodigo.TabIndex = 1;
+            this.dtgridcodigo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgridcodigo_CellClick);
+            this.dtgridcodigo.SelectionChanged += new System.EventHandler(this.dtgridcodigo_SelectionChanged);
             // 
             // cmbsubrubro
             // 
@@ -531,17 +533,6 @@
             this.CBPulicar.Text = "Publicar web";
             this.CBPulicar.UseVisualStyleBackColor = true;
             // 
-            // btnlimpiar
-            // 
-            this.btnlimpiar.BackColor = System.Drawing.Color.LightBlue;
-            this.btnlimpiar.Location = new System.Drawing.Point(679, 635);
-            this.btnlimpiar.Name = "btnlimpiar";
-            this.btnlimpiar.Size = new System.Drawing.Size(87, 32);
-            this.btnlimpiar.TabIndex = 28;
-            this.btnlimpiar.Text = "&Limpiar";
-            this.btnlimpiar.UseVisualStyleBackColor = true;
-            this.btnlimpiar.Click += new System.EventHandler(this.btnlimpiar_Click);
-            // 
             // lbltags
             // 
             this.lbltags.AutoSize = true;
@@ -632,10 +623,21 @@
             this.lblarticulo.TabIndex = 23;
             this.lblarticulo.Text = "Articulo";
             // 
+            // btnlimpiar
+            // 
+            this.btnlimpiar.BackColor = System.Drawing.Color.LightBlue;
+            this.btnlimpiar.Location = new System.Drawing.Point(616, 635);
+            this.btnlimpiar.Name = "btnlimpiar";
+            this.btnlimpiar.Size = new System.Drawing.Size(87, 32);
+            this.btnlimpiar.TabIndex = 28;
+            this.btnlimpiar.Text = "&Limpiar";
+            this.btnlimpiar.UseVisualStyleBackColor = true;
+            this.btnlimpiar.Click += new System.EventHandler(this.btnlimpiar_Click);
+            // 
             // btnbuscar
             // 
             this.btnbuscar.BackColor = System.Drawing.Color.LightBlue;
-            this.btnbuscar.Location = new System.Drawing.Point(494, 635);
+            this.btnbuscar.Location = new System.Drawing.Point(431, 635);
             this.btnbuscar.Name = "btnbuscar";
             this.btnbuscar.Size = new System.Drawing.Size(86, 32);
             this.btnbuscar.TabIndex = 26;
@@ -646,7 +648,7 @@
             // btnmodificar
             // 
             this.btnmodificar.BackColor = System.Drawing.Color.LightBlue;
-            this.btnmodificar.Location = new System.Drawing.Point(401, 635);
+            this.btnmodificar.Location = new System.Drawing.Point(338, 635);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(87, 32);
             this.btnmodificar.TabIndex = 24;
@@ -656,7 +658,7 @@
             // btnnuevo
             // 
             this.btnnuevo.BackColor = System.Drawing.Color.LightBlue;
-            this.btnnuevo.Location = new System.Drawing.Point(215, 635);
+            this.btnnuevo.Location = new System.Drawing.Point(152, 635);
             this.btnnuevo.Name = "btnnuevo";
             this.btnnuevo.Size = new System.Drawing.Size(87, 32);
             this.btnnuevo.TabIndex = 25;
@@ -667,7 +669,7 @@
             // btneliminar
             // 
             this.btneliminar.BackColor = System.Drawing.Color.LightBlue;
-            this.btneliminar.Location = new System.Drawing.Point(308, 635);
+            this.btneliminar.Location = new System.Drawing.Point(245, 635);
             this.btneliminar.Name = "btneliminar";
             this.btneliminar.Size = new System.Drawing.Size(87, 32);
             this.btneliminar.TabIndex = 26;
