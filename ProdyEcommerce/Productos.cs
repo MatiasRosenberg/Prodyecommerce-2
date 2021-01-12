@@ -27,9 +27,6 @@ namespace ProdyEcommerce
         private void Form1_Load(object sender, EventArgs e)
         {
             Funciones F = new Funciones();
-            txtarticulo.AutoCompleteCustomSource = Funciones.AutoCompleClass.Autocomplete();
-            txtarticulo.AutoCompleteMode = AutoCompleteMode.Suggest;
-            txtarticulo.AutoCompleteSource = AutoCompleteSource.CustomSource;
             F.Llenardatagrid(dtgridcodigo);
 
             txtcodigo.Enabled = false;
@@ -52,6 +49,7 @@ namespace ProdyEcommerce
             listBox2.Enabled = false;
             txttags.Enabled = false;
             btngrabar.Enabled = false;
+            btnlimpiar.Enabled = false;
         }
 
         private void btnsalir_Click(object sender, EventArgs e)
@@ -69,7 +67,7 @@ namespace ProdyEcommerce
             }
             else
             {
-                F.Grabararticulos(txtarticulo, txttags, txtdetalles, CBPulicar, Cbpagrupado, Cbpvariable, chkrubros, listBox2, listBox1);
+                F.Grabararticulos(txtarticulo, txttags, txtdetalles, CBPulicar, Cbpagrupado, Cbpvariable, chkrubros, listBox2, listBox1, txtnombrecod, cmbrubro, cmbsubrubro, txtumedida, txtcodigoequiv, txtalto, txtancho, txtpeso);
                 btnlimpiar_Click(null, null);
             }
         }
@@ -103,10 +101,23 @@ namespace ProdyEcommerce
 
         private void btnlimpiar_Click(object sender, EventArgs e)
         {
+            txtcodigo.Text = "";
+            txtnombrecod.Text = "";
+            cmbrubro.DataSource = null;
+            cmbrubro.Items.Clear();
+            cmbsubrubro.DataSource = null;
+            cmbsubrubro.Items.Clear();
+            txtumedida.Text = "";
+            txtcodigoequiv.Text = "";
+            txtprecio.Text = "";
+            txtpeso.Text = "";
+            txtalto.Text = "";
+            txtancho.Text = "";
             txtarticulo.Text = "";
             txtdetalles.Text = "";
             txtnombre.Text = "";
             txttags.Text = "";
+            txtprecio.Text = "";
             Cbpagrupado.Checked = false;
             CBPulicar.Checked = false;
             txtarticulo.Enabled = true;
@@ -118,7 +129,7 @@ namespace ProdyEcommerce
             listBox1.Items.Clear();
             listBox2.DataSource = null;
             listBox2.Items.Clear();
-            txtarticulo.Focus();
+            txtcodigo.Focus();
         }
 
         private void btnsyncp_Click(object sender, EventArgs e)
@@ -233,7 +244,7 @@ namespace ProdyEcommerce
 
         private void btnnuevo_Click(object sender, EventArgs e)
         {
-
+            btnlimpiar_Click(null, null);
             txtcodigo.Enabled = true;
             txtnombrecod.Enabled = true;
             cmbrubro.Enabled = true;
@@ -254,6 +265,8 @@ namespace ProdyEcommerce
             listBox2.Enabled = true;
             txttags.Enabled = true;
             btngrabar.Enabled = true;
+            btnlimpiar.Enabled = true;
+            btnbuscar.Enabled = false;
         }
 
         private void dtgridcodigo_CellClick(object sender, DataGridViewCellEventArgs e)

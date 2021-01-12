@@ -262,18 +262,17 @@ namespace ProdyEcommerce
             }
         }
 
-        public void Grabararticulos(TextBox idarticulo, TextBox txttags, TextBox txtdetalle, CheckBox CBweb, CheckBox CBgroup, CheckBox CBvariable, CheckedListBox listarubros, ListBox lista2, ListBox lista1)
+        public void Grabararticulos(TextBox idarticulo, TextBox txttags, TextBox txtdetalle, CheckBox CBweb, CheckBox CBgroup, CheckBox CBvariable, CheckedListBox listarubros, ListBox lista2, ListBox lista1, TextBox nombre, ComboBox rubro, ComboBox subrubro, TextBox umedida, TextBox codeqvuiv, TextBox alto, TextBox ancho, TextBox peso)
         {
             string cSqldelete = "delete from ecomm_tags  where idarticulo ='" + idarticulo.Text + "'";
-            string cSqlinserttags = "insert into ecomm_tags (idarticulo, tags) values("+ "'" + idarticulo.Text + "'" + "," + "'" + txttags.Text + "'" + ")";
+            string cSqlinserttags = "insert into ecomm_tags (idarticulo, tags) values(" + "'" + idarticulo.Text + "'" + "," + "'" + txttags.Text + "'" + ")";
             string Csql = "update articulos set WOO_DETALLE='" + txtdetalle.Text + "'" + ",";
             Csql = Csql + "publicarweb=" + Convert.ToInt16(CBweb.Checked) + ",";
             Csql = Csql + "woo_variable=" + Convert.ToInt16(CBvariable.Checked) + ",";
-            Csql = Csql + "woo_agrupado=" + Convert.ToInt16(CBgroup.Checked) + "where idarticulo='" + idarticulo.Text + "'";                  
+            Csql = Csql + "woo_agrupado=" + Convert.ToInt16(CBgroup.Checked) + "where idarticulo='" + idarticulo.Text + "'";
             string Csqlrubros = "select idarticulo, idrubro from rubrosarticulos where idarticulo ='" + idarticulo.Text + "'";
             string Csqllistaartd = "delete from ARTICULOSJERARQUIAS where IDARTICULOFATHER='" + idarticulo.Text + "'";
-            
-
+            string Csqlipbasico = "insert into articulos (idarticulo, nombre, idrubro, idsubrubro, UniMedi, codequiv, alto, ancho, peso) values(" + "'" + idarticulo.Text + "'" + "," + "'" + nombre.Text + "'" + "," + "'" + rubro.Text + "'" + "," + "'" + subrubro.Text + "'" + "," + "'" + umedida.Text + "'" + "," + "'" + codeqvuiv.Text + "'" + "," + "'" + alto.Text + "'" + "," + "'" + ancho.Text + "'" + "," + "'" + peso.Text + "'";
 
             cmd = new SqlCommand(Csqlrubros, cnn);
             SqlDataReader read = cmd.ExecuteReader();
@@ -311,6 +310,8 @@ namespace ProdyEcommerce
             {
                 //comando para hacer sentencias en sql
                 cmd = new SqlCommand(Csqllistaartd, cnn);
+                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand(Csqlipbasico, cnn);
                 cmd.ExecuteNonQuery();
                 for (int i = 0; i < lista2.Items.Count; i++)
                 {
