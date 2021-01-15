@@ -55,7 +55,6 @@ namespace ProdyEcommerce
         private void btnsalir_Click(object sender, EventArgs e)
         {
             this.Close();
-            
         }
         Busqueda_avanzada busqueda = new Busqueda_avanzada();
         
@@ -77,16 +76,12 @@ namespace ProdyEcommerce
             if (txtarticulo.Text == "")
             {
                 F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro);
-                txtarticulo.Enabled = false;
-                txtnombre.Enabled = false;
             }
         }
 
         private void txtnombre_TextChanged(object sender, EventArgs e)
         {
             F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro);
-            txtarticulo.Enabled = false;
-            txtnombre.Enabled = false;
         }
 
         private void txtarticulo_Leave(object sender, EventArgs e)
@@ -94,8 +89,6 @@ namespace ProdyEcommerce
             if (txtnombre.Text == "")
             {
                 F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro);
-                txtarticulo.Enabled = false;
-                txtnombre.Enabled = false;
             }
         }
 
@@ -129,6 +122,8 @@ namespace ProdyEcommerce
             listBox1.Items.Clear();
             listBox2.DataSource = null;
             listBox2.Items.Clear();
+            txtbuscod.Text = "";
+            txtbusnom.Text = "";
             txtcodigo.Focus();
         }
 
@@ -190,36 +185,12 @@ namespace ProdyEcommerce
 
         private void txtarticulo_Validated(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtarticulo.Text) == true || string.IsNullOrEmpty(txtnombre.Text) == true)
-            {
-                txtarticulo.Enabled = false;
-            }
-            else
-            {
-                txtarticulo.Enabled = true;
-            }
-        }
-
-        private void txtnombre_Validated(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtarticulo.Text) == true || string.IsNullOrEmpty(txtnombre.Text) == true)
-            {
-                txtnombre.Enabled = false;
-            }
-            else
-            {
-                txtnombre.Enabled = true;
-            }
+           
         }
 
         private void btnbuscar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtarticulo.Text) == true || string.IsNullOrEmpty(txtnombre.Text) == true || string.IsNullOrEmpty(txtcodigo.Text) == true || string.IsNullOrEmpty(txtnombrecod.Text) == true)
-            {
                 busqueda.ShowDialog();
-                txtarticulo.Enabled = true;
-                txtnombre.Enabled = true;
-            }
         }
 
         private void txtbusnom_KeyUp(object sender, KeyEventArgs e)
@@ -256,8 +227,6 @@ namespace ProdyEcommerce
             txtpeso.Enabled = true;
             txtalto.Enabled = true;
             txtancho.Enabled = true;
-            txtarticulo.Enabled = true;
-            txtnombre.Enabled = true;
             txtdetalles.Enabled = true;
             txtdetalles.Enabled = true;
             chkrubros.Enabled = true;

@@ -1,6 +1,6 @@
 ﻿namespace ProdyEcommerce
 {
-    partial class Prodyecommerce
+    partial class Prodyecommercefull
     {
         /// <summary>
         /// Required designer variable.
@@ -140,7 +140,7 @@
             this.lblsync0.Size = new System.Drawing.Size(0, 14);
             this.lblsync0.TabIndex = 21;
             // 
-            // Prodyecommerce
+            // Prodyecommercefull
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -156,9 +156,9 @@
             this.Controls.Add(this.Btnsalir);
             this.Controls.Add(this.btnconfiguracion);
             this.Controls.Add(this.Btnproductos);
-            this.Name = "Prodyecommerce";
+            this.Name = "Prodyecommercefull";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Prodyecommerce";
+            this.Text = "Prodyecommercefull";
             this.Load += new System.EventHandler(this.Prodyecommerce_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

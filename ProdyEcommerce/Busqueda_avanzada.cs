@@ -85,6 +85,8 @@ namespace ProdyEcommerce
                 P.txtnombre.Text = dgvarticulos.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
                 P.txtcodigo.Text = dgvarticulos.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
                 P.txtnombrecod.Text = dgvarticulos.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
+                P.txtarticulo.Enabled = false;
+                P.txtnombre.Enabled = false;
                 this.Hide();
             }
         }

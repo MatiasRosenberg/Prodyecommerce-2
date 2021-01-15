@@ -17,7 +17,7 @@ namespace ProdyEcommerce
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Prodyecommerce());
+            Application.Run(new Prodyecommercefull());
         }
     }
 }

@@ -17,6 +17,7 @@ namespace ProdyEcommerce
         SqlCommand cmd;
         DataTable dt;
         SqlDataAdapter da;
+        SqlDataReader dr;
 
 
         public static class AutoCompleClass
@@ -99,12 +100,12 @@ namespace ProdyEcommerce
             listarubros.DisplayMember = "Nombre";
             listarubros.ValueMember = "idRubro";
 
-            string Csqlrubros = "select idrubro, Nombre from rubros";
+            string Csqlrubros = "select articulos.IdArticulo as idarticulo ,rubros.idrubro as rubro, rubros.Nombre as nombre from rubros left join Articulos on rubros.idrubro = articulos.idrubro where idarticulo = '" + cajaidarticulo.Text + "'" + " order by nombre asc";
             da = new SqlDataAdapter(Csqlrubros, cnn);
             DataTable rubro = new DataTable();
             da.Fill(rubro);
 
-            string Csqlsubrubros = "select idsubrubro, Nombre from subrubros";
+            string Csqlsubrubros = "select articulos.IdArticulo as idarticulo , subrubros.IdSubRubro as subrubro, subrubros.Nombre as nombre from Subrubros left join Articulos on  subrubros.IdSubRubro = articulos.idrubro where idarticulo = '" + cajaidarticulo.Text + "'" + " order by nombre asc";
             da = new SqlDataAdapter(Csqlsubrubros, cnn);
             DataTable subrubro = new DataTable();
             da.Fill(subrubro);
@@ -131,7 +132,7 @@ namespace ProdyEcommerce
             cmd = new SqlCommand(Csqllista, cnn);
             SqlDataReader read4 = cmd.ExecuteReader();
 
-            string Csqlprecioecomm = "select precio from PRECIOS_ECOMMERCE";
+            string Csqlprecioecomm = "select precio from precios where idarticulo  ='" + cajaidarticulo.Text + "'";
             cmd = new SqlCommand(Csqlprecioecomm, cnn);
             SqlDataReader read5 = cmd.ExecuteReader();
 
@@ -309,6 +310,8 @@ namespace ProdyEcommerce
             try
             {
                 //comando para hacer sentencias en sql
+                cmd = new SqlCommand(Csqlipbasico, cnn);
+                cmd.ExecuteNonQuery();
                 cmd = new SqlCommand(Csqllistaartd, cnn);
                 cmd.ExecuteNonQuery();
                 cmd = new SqlCommand(Csqlipbasico, cnn);
@@ -628,6 +631,7 @@ namespace ProdyEcommerce
                 MessageBox.Show("Fallo la funcion de sincronizacion");
             }
         }
+
     }
 }
 

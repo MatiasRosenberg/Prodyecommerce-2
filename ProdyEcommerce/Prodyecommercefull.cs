@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace ProdyEcommerce
 {
-    public partial class Prodyecommerce : Form
+    public partial class Prodyecommercefull : Form
     {
         Funciones F = new Funciones();
-        public Prodyecommerce()
+        public Prodyecommercefull()
         {
             InitializeComponent();
         }

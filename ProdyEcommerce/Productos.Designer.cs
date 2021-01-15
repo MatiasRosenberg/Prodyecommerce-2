@@ -81,7 +81,7 @@
             this.btnbuscar = new System.Windows.Forms.Button();
             this.btnmodificar = new System.Windows.Forms.Button();
             this.btnnuevo = new System.Windows.Forms.Button();
-            this.btneliminar = new System.Windows.Forms.Button();
+            this.chkinhabilitar = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.label.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgridcodigo)).BeginInit();
@@ -91,7 +91,7 @@
             // btngrabar
             // 
             this.btngrabar.BackColor = System.Drawing.Color.LightBlue;
-            this.btngrabar.Location = new System.Drawing.Point(523, 635);
+            this.btngrabar.Location = new System.Drawing.Point(503, 635);
             this.btngrabar.Name = "btngrabar";
             this.btngrabar.Size = new System.Drawing.Size(87, 32);
             this.btngrabar.TabIndex = 10;
@@ -102,7 +102,7 @@
             // btnsalir
             // 
             this.btnsalir.BackColor = System.Drawing.Color.LightBlue;
-            this.btnsalir.Location = new System.Drawing.Point(709, 634);
+            this.btnsalir.Location = new System.Drawing.Point(689, 634);
             this.btnsalir.Name = "btnsalir";
             this.btnsalir.Size = new System.Drawing.Size(87, 32);
             this.btnsalir.TabIndex = 11;
@@ -198,16 +198,16 @@
             this.cmbsubrubro.FormattingEnabled = true;
             this.cmbsubrubro.Location = new System.Drawing.Point(88, 93);
             this.cmbsubrubro.Name = "cmbsubrubro";
-            this.cmbsubrubro.Size = new System.Drawing.Size(121, 21);
-            this.cmbsubrubro.TabIndex = 47;
+            this.cmbsubrubro.Size = new System.Drawing.Size(187, 21);
+            this.cmbsubrubro.TabIndex = 5;
             // 
             // cmbrubro
             // 
             this.cmbrubro.FormattingEnabled = true;
             this.cmbrubro.Location = new System.Drawing.Point(88, 61);
             this.cmbrubro.Name = "cmbrubro";
-            this.cmbrubro.Size = new System.Drawing.Size(121, 21);
-            this.cmbrubro.TabIndex = 46;
+            this.cmbrubro.Size = new System.Drawing.Size(187, 21);
+            this.cmbrubro.TabIndex = 4;
             // 
             // txtumedida
             // 
@@ -216,7 +216,7 @@
             this.txtumedida.Location = new System.Drawing.Point(88, 121);
             this.txtumedida.Name = "txtumedida";
             this.txtumedida.Size = new System.Drawing.Size(129, 20);
-            this.txtumedida.TabIndex = 45;
+            this.txtumedida.TabIndex = 6;
             // 
             // txtprecio
             // 
@@ -225,7 +225,7 @@
             this.txtprecio.Location = new System.Drawing.Point(88, 177);
             this.txtprecio.Name = "txtprecio";
             this.txtprecio.Size = new System.Drawing.Size(129, 20);
-            this.txtprecio.TabIndex = 44;
+            this.txtprecio.TabIndex = 8;
             // 
             // txtancho
             // 
@@ -234,7 +234,7 @@
             this.txtancho.Location = new System.Drawing.Point(517, 233);
             this.txtancho.Name = "txtancho";
             this.txtancho.Size = new System.Drawing.Size(129, 20);
-            this.txtancho.TabIndex = 43;
+            this.txtancho.TabIndex = 12;
             // 
             // txtalto
             // 
@@ -243,7 +243,7 @@
             this.txtalto.Location = new System.Drawing.Point(281, 233);
             this.txtalto.Name = "txtalto";
             this.txtalto.Size = new System.Drawing.Size(129, 20);
-            this.txtalto.TabIndex = 42;
+            this.txtalto.TabIndex = 11;
             // 
             // txtpeso
             // 
@@ -252,7 +252,7 @@
             this.txtpeso.Location = new System.Drawing.Point(88, 233);
             this.txtpeso.Name = "txtpeso";
             this.txtpeso.Size = new System.Drawing.Size(129, 20);
-            this.txtpeso.TabIndex = 41;
+            this.txtpeso.TabIndex = 10;
             // 
             // txtstock
             // 
@@ -261,7 +261,7 @@
             this.txtstock.Location = new System.Drawing.Point(88, 205);
             this.txtstock.Name = "txtstock";
             this.txtstock.Size = new System.Drawing.Size(129, 20);
-            this.txtstock.TabIndex = 40;
+            this.txtstock.TabIndex = 9;
             // 
             // txtcodigoequiv
             // 
@@ -270,7 +270,7 @@
             this.txtcodigoequiv.Location = new System.Drawing.Point(170, 149);
             this.txtcodigoequiv.Name = "txtcodigoequiv";
             this.txtcodigoequiv.Size = new System.Drawing.Size(129, 20);
-            this.txtcodigoequiv.TabIndex = 39;
+            this.txtcodigoequiv.TabIndex = 7;
             // 
             // lblancho
             // 
@@ -390,7 +390,7 @@
             this.txtnombrecod.MaxLength = 50;
             this.txtnombrecod.Name = "txtnombrecod";
             this.txtnombrecod.Size = new System.Drawing.Size(318, 20);
-            this.txtnombrecod.TabIndex = 27;
+            this.txtnombrecod.TabIndex = 3;
             // 
             // txtcodigo
             // 
@@ -399,10 +399,11 @@
             this.txtcodigo.Location = new System.Drawing.Point(88, 6);
             this.txtcodigo.Name = "txtcodigo";
             this.txtcodigo.Size = new System.Drawing.Size(129, 20);
-            this.txtcodigo.TabIndex = 26;
+            this.txtcodigo.TabIndex = 2;
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.chkinhabilitar);
             this.tabPage2.Controls.Add(this.btnsyncp);
             this.tabPage2.Controls.Add(this.lblagrupacion);
             this.tabPage2.Controls.Add(this.txtlistart);
@@ -433,7 +434,7 @@
             // btnsyncp
             // 
             this.btnsyncp.BackColor = System.Drawing.Color.LightBlue;
-            this.btnsyncp.Location = new System.Drawing.Point(456, 53);
+            this.btnsyncp.Location = new System.Drawing.Point(336, 53);
             this.btnsyncp.Name = "btnsyncp";
             this.btnsyncp.Size = new System.Drawing.Size(130, 26);
             this.btnsyncp.TabIndex = 43;
@@ -599,7 +600,6 @@
             this.txtnombre.TabIndex = 25;
             this.txtnombre.TextChanged += new System.EventHandler(this.txtnombre_TextChanged);
             this.txtnombre.Leave += new System.EventHandler(this.txtnombre_Leave);
-            this.txtnombre.Validated += new System.EventHandler(this.txtnombre_Validated);
             // 
             // txtarticulo
             // 
@@ -626,7 +626,7 @@
             // btnlimpiar
             // 
             this.btnlimpiar.BackColor = System.Drawing.Color.LightBlue;
-            this.btnlimpiar.Location = new System.Drawing.Point(616, 635);
+            this.btnlimpiar.Location = new System.Drawing.Point(596, 635);
             this.btnlimpiar.Name = "btnlimpiar";
             this.btnlimpiar.Size = new System.Drawing.Size(87, 32);
             this.btnlimpiar.TabIndex = 28;
@@ -637,7 +637,7 @@
             // btnbuscar
             // 
             this.btnbuscar.BackColor = System.Drawing.Color.LightBlue;
-            this.btnbuscar.Location = new System.Drawing.Point(431, 635);
+            this.btnbuscar.Location = new System.Drawing.Point(411, 635);
             this.btnbuscar.Name = "btnbuscar";
             this.btnbuscar.Size = new System.Drawing.Size(86, 32);
             this.btnbuscar.TabIndex = 26;
@@ -648,7 +648,7 @@
             // btnmodificar
             // 
             this.btnmodificar.BackColor = System.Drawing.Color.LightBlue;
-            this.btnmodificar.Location = new System.Drawing.Point(338, 635);
+            this.btnmodificar.Location = new System.Drawing.Point(318, 635);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(87, 32);
             this.btnmodificar.TabIndex = 24;
@@ -658,7 +658,7 @@
             // btnnuevo
             // 
             this.btnnuevo.BackColor = System.Drawing.Color.LightBlue;
-            this.btnnuevo.Location = new System.Drawing.Point(152, 635);
+            this.btnnuevo.Location = new System.Drawing.Point(225, 635);
             this.btnnuevo.Name = "btnnuevo";
             this.btnnuevo.Size = new System.Drawing.Size(87, 32);
             this.btnnuevo.TabIndex = 25;
@@ -666,15 +666,15 @@
             this.btnnuevo.UseVisualStyleBackColor = true;
             this.btnnuevo.Click += new System.EventHandler(this.btnnuevo_Click);
             // 
-            // btneliminar
+            // chkinhabilitar
             // 
-            this.btneliminar.BackColor = System.Drawing.Color.LightBlue;
-            this.btneliminar.Location = new System.Drawing.Point(245, 635);
-            this.btneliminar.Name = "btneliminar";
-            this.btneliminar.Size = new System.Drawing.Size(87, 32);
-            this.btneliminar.TabIndex = 26;
-            this.btneliminar.Text = "&Eliminar";
-            this.btneliminar.UseVisualStyleBackColor = true;
+            this.chkinhabilitar.AutoSize = true;
+            this.chkinhabilitar.Location = new System.Drawing.Point(472, 59);
+            this.chkinhabilitar.Name = "chkinhabilitar";
+            this.chkinhabilitar.Size = new System.Drawing.Size(116, 17);
+            this.chkinhabilitar.TabIndex = 44;
+            this.chkinhabilitar.Text = "Inhabilitar producto";
+            this.chkinhabilitar.UseVisualStyleBackColor = true;
             // 
             // Productos
             // 
@@ -682,7 +682,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(976, 679);
-            this.Controls.Add(this.btneliminar);
             this.Controls.Add(this.btnnuevo);
             this.Controls.Add(this.btnmodificar);
             this.Controls.Add(this.tabControl1);
@@ -760,7 +759,7 @@
         public System.Windows.Forms.TextBox txtbusnom;
         private System.Windows.Forms.Button btnmodificar;
         private System.Windows.Forms.Button btnnuevo;
-        private System.Windows.Forms.Button btneliminar;
+        private System.Windows.Forms.CheckBox chkinhabilitar;
     }
 }
 

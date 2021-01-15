@@ -6,14 +6,14 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{9F318A53-B98E-4926-B139-502961857E24}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ProdyEcommerce</RootNamespace>
-    <AssemblyName>ProdyEcommerce</AssemblyName>
+    <RootNamespace>ProdyEcommercefull</RootNamespace>
+    <AssemblyName>ProdyEcommercefull</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PublishUrl>ftp://prodytec.com/aplicaciones/prodycommerce/</PublishUrl>
+    <PublishUrl>ftp://prodytec.com/aplicaciones/prodycommercefull/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -23,10 +23,9 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://prodytec.com/aplicaciones/prodycommerce/</InstallUrl>
+    <InstallUrl>http://prodytec.com/aplicaciones/prodycommercefull/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
-    <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>21</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -129,11 +128,11 @@
       <DependentUpon>Productos.cs</DependentUpon>
     </Compile>
     <Compile Include="Funciones.cs" />
-    <Compile Include="Prodyecommerce.cs">
+    <Compile Include="Prodyecommercefull.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Prodyecommerce.Designer.cs">
-      <DependentUpon>Prodyecommerce.cs</DependentUpon>
+    <Compile Include="Prodyecommercefull.Designer.cs">
+      <DependentUpon>Prodyecommercefull.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -155,8 +154,8 @@
     <EmbeddedResource Include="Productos.resx">
       <DependentUpon>Productos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Prodyecommerce.resx">
-      <DependentUpon>Prodyecommerce.cs</DependentUpon>
+    <EmbeddedResource Include="Prodyecommercefull.resx">
+      <DependentUpon>Prodyecommercefull.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -166,6 +165,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="ProdyEcommerce_TemporaryKey.pfx" />
