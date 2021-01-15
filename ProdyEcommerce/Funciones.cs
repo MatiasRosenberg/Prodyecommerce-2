@@ -81,7 +81,7 @@ namespace ProdyEcommerce
 
         }
 
-        public void Llenarproductos(TextBox cajanombre, TextBox cajadetalle, TextBox cajatags, CheckedListBox listarubros, TextBox cajaidarticulo, TextBox cajaumedida, TextBox codequiv, TextBox cajapeso, TextBox cajaalto, TextBox cajaancho, CheckBox checkweb, CheckBox Checkvariable, CheckBox agrupar, ListBox lista1, ListBox lista2, TextBox Precios, ComboBox cbrubros, ComboBox cbsubrubros)
+        public void Llenarproductos(TextBox cajanombre, TextBox cajadetalle, TextBox cajatags, CheckedListBox listarubros, TextBox cajaidarticulo, TextBox cajaumedida, TextBox codequiv, TextBox cajapeso, TextBox cajaalto, TextBox cajaancho, CheckBox checkweb, CheckBox Checkvariable, CheckBox agrupar, ListBox lista1, ListBox lista2, TextBox Precios, ComboBox cbrubros, ComboBox cbsubrubros, ComboBox cbidlista)
         {
             cmd = new SqlCommand("Select nombre, idarticulo, UniMedi, WOO_DETALLE, CodEquiv, Peso, isnull(Alto, 0) Alto, isnull(Ancho, 0) Ancho  from articulos where idarticulo='" + cajaidarticulo.Text + "'", cnn);
             SqlDataReader read = cmd.ExecuteReader();
@@ -629,6 +629,22 @@ namespace ProdyEcommerce
             catch(Exception)
             {
                 MessageBox.Show("Fallo la funcion de sincronizacion");
+            }
+        }
+
+        public void FormatoMoneda(TextBox xTBox)
+        {
+            if (xTBox.Text == string.Empty)
+            {
+                return;
+            }
+            else
+            {
+                decimal Monto;
+
+                Monto = Convert.ToDecimal(xTBox.Text);
+                xTBox.Text = Monto.ToString("N2");
+
             }
         }
 

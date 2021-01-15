@@ -13,7 +13,7 @@ namespace ProdyEcommerce
 {
     public partial class Productos : Form
     {
-
+        Configuracion C = new Configuracion();
         Funciones F = new Funciones();
         SqlCommand cmd = new SqlCommand();
         SqlConnection cnn = BaseDatos.DbConnection.getDBConnection();
@@ -75,20 +75,20 @@ namespace ProdyEcommerce
         {
             if (txtarticulo.Text == "")
             {
-                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro);
+                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, C.cbpublicar);
             }
         }
 
         private void txtnombre_TextChanged(object sender, EventArgs e)
         {
-            F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro);
+            F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, C.cbpublicar);
         }
 
         private void txtarticulo_Leave(object sender, EventArgs e)
         {
             if (txtnombre.Text == "")
             {
-                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro);
+                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, C.cbpublicar);
             }
         }
 
@@ -177,7 +177,7 @@ namespace ProdyEcommerce
         {
             if (string.IsNullOrEmpty(txtarticulo.Text) == true)
             {
-                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro);
+                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, C.cbpublicar);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
             }
@@ -260,6 +260,11 @@ namespace ProdyEcommerce
             txtnombrecod.Text = row.Cells["Nombre"].Value.ToString();
             txtarticulo.Text = row.Cells["Codigo"].Value.ToString();
             txtnombre.Text = row.Cells["Nombre"].Value.ToString();
+        }
+
+        private void txtprecio_Validated(object sender, EventArgs e)
+        {
+            F.FormatoMoneda(txtprecio);
         }
     }
 }

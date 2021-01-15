@@ -58,6 +58,7 @@
             this.txtnombrecod = new System.Windows.Forms.TextBox();
             this.txtcodigo = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.chkinhabilitar = new System.Windows.Forms.CheckBox();
             this.btnsyncp = new System.Windows.Forms.Button();
             this.lblagrupacion = new System.Windows.Forms.Label();
             this.txtlistart = new System.Windows.Forms.TextBox();
@@ -81,7 +82,6 @@
             this.btnbuscar = new System.Windows.Forms.Button();
             this.btnmodificar = new System.Windows.Forms.Button();
             this.btnnuevo = new System.Windows.Forms.Button();
-            this.chkinhabilitar = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.label.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgridcodigo)).BeginInit();
@@ -226,6 +226,7 @@
             this.txtprecio.Name = "txtprecio";
             this.txtprecio.Size = new System.Drawing.Size(129, 20);
             this.txtprecio.TabIndex = 8;
+            this.txtprecio.Validated += new System.EventHandler(this.txtprecio_Validated);
             // 
             // txtancho
             // 
@@ -430,6 +431,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Detalles Ecommerce";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // chkinhabilitar
+            // 
+            this.chkinhabilitar.AutoSize = true;
+            this.chkinhabilitar.Location = new System.Drawing.Point(472, 59);
+            this.chkinhabilitar.Name = "chkinhabilitar";
+            this.chkinhabilitar.Size = new System.Drawing.Size(116, 17);
+            this.chkinhabilitar.TabIndex = 44;
+            this.chkinhabilitar.Text = "Inhabilitar producto";
+            this.chkinhabilitar.UseVisualStyleBackColor = true;
             // 
             // btnsyncp
             // 
@@ -665,16 +676,6 @@
             this.btnnuevo.Text = "&Nuevo";
             this.btnnuevo.UseVisualStyleBackColor = true;
             this.btnnuevo.Click += new System.EventHandler(this.btnnuevo_Click);
-            // 
-            // chkinhabilitar
-            // 
-            this.chkinhabilitar.AutoSize = true;
-            this.chkinhabilitar.Location = new System.Drawing.Point(472, 59);
-            this.chkinhabilitar.Name = "chkinhabilitar";
-            this.chkinhabilitar.Size = new System.Drawing.Size(116, 17);
-            this.chkinhabilitar.TabIndex = 44;
-            this.chkinhabilitar.Text = "Inhabilitar producto";
-            this.chkinhabilitar.UseVisualStyleBackColor = true;
             // 
             // Productos
             // 
