@@ -26,6 +26,7 @@ namespace ProdyEcommerce
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
             Funciones F = new Funciones();
             F.Llenardatagrid(dtgridcodigo);
 
@@ -75,20 +76,20 @@ namespace ProdyEcommerce
         {
             if (txtarticulo.Text == "")
             {
-                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, C.cbpublicar);
+                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, C.cbpublicar, txtstock);
             }
         }
 
         private void txtnombre_TextChanged(object sender, EventArgs e)
         {
-            F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, C.cbpublicar);
+            F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, C.cbpublicar, txtstock);
         }
 
         private void txtarticulo_Leave(object sender, EventArgs e)
         {
             if (txtnombre.Text == "")
             {
-                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, C.cbpublicar);
+                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, C.cbpublicar, txtstock);
             }
         }
 
@@ -96,10 +97,6 @@ namespace ProdyEcommerce
         {
             txtcodigo.Text = "";
             txtnombrecod.Text = "";
-            cmbrubro.DataSource = null;
-            cmbrubro.Items.Clear();
-            cmbsubrubro.DataSource = null;
-            cmbsubrubro.Items.Clear();
             txtumedida.Text = "";
             txtcodigoequiv.Text = "";
             txtprecio.Text = "";
@@ -177,7 +174,7 @@ namespace ProdyEcommerce
         {
             if (string.IsNullOrEmpty(txtarticulo.Text) == true)
             {
-                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, C.cbpublicar);
+                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, C.cbpublicar, txtstock);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
             }

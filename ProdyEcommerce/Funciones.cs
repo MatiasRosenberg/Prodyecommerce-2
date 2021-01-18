@@ -81,7 +81,7 @@ namespace ProdyEcommerce
 
         }
 
-        public void Llenarproductos(TextBox cajanombre, TextBox cajadetalle, TextBox cajatags, CheckedListBox listarubros, TextBox cajaidarticulo, TextBox cajaumedida, TextBox codequiv, TextBox cajapeso, TextBox cajaalto, TextBox cajaancho, CheckBox checkweb, CheckBox Checkvariable, CheckBox agrupar, ListBox lista1, ListBox lista2, TextBox Precios, ComboBox cbrubros, ComboBox cbsubrubros, ComboBox cbidlista)
+        public void Llenarproductos(TextBox cajanombre, TextBox cajadetalle, TextBox cajatags, CheckedListBox listarubros, TextBox cajaidarticulo, TextBox cajaumedida, TextBox codequiv, TextBox cajapeso, TextBox cajaalto, TextBox cajaancho, CheckBox checkweb, CheckBox Checkvariable, CheckBox agrupar, ListBox lista1, ListBox lista2, TextBox Precios, ComboBox cbrubros, ComboBox cbsubrubros, ComboBox cbidlista, TextBox cajastock)
         {
             cmd = new SqlCommand("Select nombre, idarticulo, UniMedi, WOO_DETALLE, CodEquiv, Peso, isnull(Alto, 0) Alto, isnull(Ancho, 0) Ancho  from articulos where idarticulo='" + cajaidarticulo.Text + "'", cnn);
             SqlDataReader read = cmd.ExecuteReader();
@@ -135,6 +135,10 @@ namespace ProdyEcommerce
             string Csqlprecioecomm = "select precio from precios where idarticulo  ='" + cajaidarticulo.Text + "'";
             cmd = new SqlCommand(Csqlprecioecomm, cnn);
             SqlDataReader read5 = cmd.ExecuteReader();
+
+            string Csqlstock = "select Cantidad from stock where idarticulo ='" + cajaidarticulo.Text + "'";
+            cmd = new SqlCommand(Csqlstock, cnn);
+            SqlDataReader read6 = cmd.ExecuteReader();
 
             DataTable dtlista1 = new DataTable();
             string Csqllist = "select idarticulo, Nombre from articulos order by Nombre asc";
@@ -242,6 +246,15 @@ namespace ProdyEcommerce
             {
                 Precios.Text = "";
             }
+
+            if (read6.Read() == true)
+            {
+                cajastock.Text = read6["Cantidad"].ToString();
+            }
+            else
+            {
+                cajastock.Text = "";
+            }
         }
 
         public void Llenardatagrid(DataGridView dgv)
@@ -310,8 +323,6 @@ namespace ProdyEcommerce
             try
             {
                 //comando para hacer sentencias en sql
-                cmd = new SqlCommand(Csqlipbasico, cnn);
-                cmd.ExecuteNonQuery();
                 cmd = new SqlCommand(Csqllistaartd, cnn);
                 cmd.ExecuteNonQuery();
                 cmd = new SqlCommand(Csqlipbasico, cnn);
