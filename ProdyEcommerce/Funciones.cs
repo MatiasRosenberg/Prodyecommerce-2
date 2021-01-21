@@ -17,8 +17,7 @@ namespace ProdyEcommerce
         SqlCommand cmd;
         DataTable dt;
         SqlDataAdapter da;
-        SqlDataReader dr;
-
+        
 
         public static class AutoCompleClass
         {
@@ -81,8 +80,14 @@ namespace ProdyEcommerce
 
         }
 
-        public void Llenarproductos(TextBox cajanombre, TextBox cajadetalle, TextBox cajatags, CheckedListBox listarubros, TextBox cajaidarticulo, TextBox cajaumedida, TextBox codequiv, TextBox cajapeso, TextBox cajaalto, TextBox cajaancho, CheckBox checkweb, CheckBox Checkvariable, CheckBox agrupar, ListBox lista1, ListBox lista2, TextBox Precios, ComboBox cbrubros, ComboBox cbsubrubros, ComboBox cbidlista, TextBox cajastock)
+        public void Llenarproductos(TextBox cajanombre, TextBox cajadetalle, TextBox cajatags, CheckedListBox listarubros, TextBox cajaidarticulo, TextBox cajaumedida, TextBox codequiv, TextBox cajapeso, TextBox cajaalto, TextBox cajaancho, CheckBox checkweb, CheckBox Checkvariable, CheckBox agrupar, ListBox lista1, ListBox lista2, TextBox Precios, ComboBox cbrubros, ComboBox cbsubrubros, TextBox cajastock)
         {
+            DataTable ConfigData = new DataTable();
+            string sql = "Select * From Configuracion";
+            SqlCommand cmd = new SqlCommand(sql, cnn);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(ConfigData);
+
             cmd = new SqlCommand("Select nombre, idarticulo, UniMedi, WOO_DETALLE, CodEquiv, Peso, isnull(Alto, 0) Alto, isnull(Ancho, 0) Ancho  from articulos where idarticulo='" + cajaidarticulo.Text + "'", cnn);
             SqlDataReader read = cmd.ExecuteReader();
             cmd = new SqlCommand("Select TAGS from ecomm_tags where idarticulo='" + cajaidarticulo.Text + "'", cnn);
@@ -132,11 +137,11 @@ namespace ProdyEcommerce
             cmd = new SqlCommand(Csqllista, cnn);
             SqlDataReader read4 = cmd.ExecuteReader();
 
-            string Csqlprecioecomm = "select precio from precios where idarticulo  ='" + cajaidarticulo.Text + "'";
+            string Csqlprecioecomm = "select precio from precios where idarticulo  ='" + cajaidarticulo.Text + "'" + "and idlista='" + ConfigData.Rows[0]["SHOPPRICELIST"].ToString() + "'";
             cmd = new SqlCommand(Csqlprecioecomm, cnn);
             SqlDataReader read5 = cmd.ExecuteReader();
 
-            string Csqlstock = "select Cantidad from stock where idarticulo ='" + cajaidarticulo.Text + "'";
+            string Csqlstock = "select Cantidad from stock where idarticulo ='" + cajaidarticulo.Text + "'" + "and iddeposito='" + ConfigData.Rows[0]["SHOPSTOCKID"].ToString() + "'";
             cmd = new SqlCommand(Csqlstock, cnn);
             SqlDataReader read6 = cmd.ExecuteReader();
 
@@ -276,8 +281,16 @@ namespace ProdyEcommerce
             }
         }
 
-        public void Grabararticulos(TextBox idarticulo, TextBox txttags, TextBox txtdetalle, CheckBox CBweb, CheckBox CBgroup, CheckBox CBvariable, CheckedListBox listarubros, ListBox lista2, ListBox lista1, TextBox nombre, ComboBox rubro, ComboBox subrubro, TextBox umedida, TextBox codeqvuiv, TextBox alto, TextBox ancho, TextBox peso)
+        public void Grabararticulos(TextBox idarticulo, TextBox txttags, TextBox txtdetalle, CheckBox CBweb, CheckBox CBgroup, CheckBox CBvariable, CheckedListBox listarubros, ListBox lista2, ListBox lista1, TextBox nombre, ComboBox rubro, ComboBox subrubro, TextBox umedida, TextBox codeqvuiv, TextBox alto, TextBox ancho, TextBox peso, TextBox precio, TextBox cantidad)
         {
+
+            DataTable ConfigData = new DataTable();
+            string sql = "Select * From Configuracion";
+            SqlCommand cmd = new SqlCommand(sql, cnn);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(ConfigData);
+
+
             string cSqldelete = "delete from ecomm_tags  where idarticulo ='" + idarticulo.Text + "'";
             string cSqlinserttags = "insert into ecomm_tags (idarticulo, tags) values(" + "'" + idarticulo.Text + "'" + "," + "'" + txttags.Text + "'" + ")";
             string Csql = "update articulos set WOO_DETALLE='" + txtdetalle.Text + "'" + ",";
@@ -286,7 +299,9 @@ namespace ProdyEcommerce
             Csql = Csql + "woo_agrupado=" + Convert.ToInt16(CBgroup.Checked) + "where idarticulo='" + idarticulo.Text + "'";
             string Csqlrubros = "select idarticulo, idrubro from rubrosarticulos where idarticulo ='" + idarticulo.Text + "'";
             string Csqllistaartd = "delete from ARTICULOSJERARQUIAS where IDARTICULOFATHER='" + idarticulo.Text + "'";
-            string Csqlipbasico = "insert into articulos (idarticulo, nombre, idrubro, idsubrubro, UniMedi, codequiv, alto, ancho, peso) values(" + "'" + idarticulo.Text + "'" + "," + "'" + nombre.Text + "'" + "," + "'" + rubro.Text + "'" + "," + "'" + subrubro.Text + "'" + "," + "'" + umedida.Text + "'" + "," + "'" + codeqvuiv.Text + "'" + "," + "'" + alto.Text + "'" + "," + "'" + ancho.Text + "'" + "," + "'" + peso.Text + "'";
+            string Csqlipbasico = "insert into articulos (idarticulo, idarticulobarra , nombre, idrubro, idsubrubro, UniMedi, codequiv, alto, ancho, peso, idclase) values(" + "'" + idarticulo.Text + "'" + "," + "'" + idarticulo.Text + "'" + "," + "'" + nombre.Text + "'" + "," + "'" + rubro.SelectedValue.ToString() + "'" + "," + "'" + subrubro.SelectedValue.ToString() + "'" + "," + "'" + umedida.Text + "'" + "," + "'" + codeqvuiv.Text + "'" + "," + "'" + alto.Text + "'" + "," + "'" + ancho.Text + "'" + "," + "'" + peso.Text + "'" + "," + "'" + "0001" + "'" + ")";
+            string Csqlipreciob = "insert into precios(idarticulobarra, idarticulo, idlista, precio, porcentaje, idmoneda) values (" + "'" + idarticulo.Text + "'" + "," + "'" + idarticulo.Text + "'" + "," + "'" + ConfigData.Rows[0]["SHOPPRICELIST"].ToString() + "'" + "," + "'" + precio.Text + "'" + "," + "'" + "0" + "'" + "," + "'" + ConfigData.Rows[0]["SHOPIDMONEDA"].ToString() + "'" + ")";
+            string Csqlistock = "insert into stock (idarticulobarra, idarticulo, iddeposito, cantidad) values (" + "'" + idarticulo.Text + "'" + "," + "'" + idarticulo.Text + "'" + "," + "'" + ConfigData.Rows[0]["SHOPSTOCKID"].ToString() + "'" + "," + "'" + cantidad + "'" + ")";
 
             cmd = new SqlCommand(Csqlrubros, cnn);
             SqlDataReader read = cmd.ExecuteReader();
@@ -322,11 +337,18 @@ namespace ProdyEcommerce
 
             try
             {
+                
                 //comando para hacer sentencias en sql
                 cmd = new SqlCommand(Csqllistaartd, cnn);
                 cmd.ExecuteNonQuery();
                 cmd = new SqlCommand(Csqlipbasico, cnn);
                 cmd.ExecuteNonQuery();
+                cmd = new SqlCommand(Csqlipreciob, cnn);
+                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand(Csqlistock, cnn);
+                cmd.ExecuteNonQuery();
+
+
                 for (int i = 0; i < lista2.Items.Count; i++)
                 {
                     string Cadena = lista2.Items[i].ToString();
@@ -334,7 +356,7 @@ namespace ProdyEcommerce
                     int cValor = Cadena.IndexOf('?') + 1;
                     string id = Cadena.Substring(cValor, nLargo - cValor);
 
-                    string Csqllistaarti = "insert into ARTICULOSJERARQUIAS (idarticulo, idarticulofather) values(" + "'" + id +"'" + "," + "'" + idarticulo.Text + "'" + ")";
+                    string Csqllistaarti = "insert into ARTICULOSJERARQUIAS (idarticulo, idarticulofather) values(" + "'" + id + "'" + "," + "'" + idarticulo.Text + "'" + ")";
                     cmd = new SqlCommand(Csqllistaarti, cnn);
                     cmd.ExecuteNonQuery();
                 }
@@ -369,6 +391,11 @@ namespace ProdyEcommerce
 
             MessageBox.Show("Se grabo correctamente");
 
+        }
+
+        public void modificarproductos(TextBox idarticulo, TextBox txttags, TextBox txtdetalle, CheckBox CBweb, CheckBox CBgroup, CheckBox CBvariable, CheckedListBox listarubros, ListBox lista2, ListBox lista1, TextBox nombre, ComboBox rubro, ComboBox subrubro, TextBox umedida, TextBox codeqvuiv, TextBox alto, TextBox ancho, TextBox peso, TextBox precio, TextBox cantidad)
+        {
+            
         }
 
         public void Llenarconfiguracion(ComboBox cblista, ComboBox cbvendedor, ComboBox cbstock, ComboBox cbmoneda, CheckBox Chbox, TextBox imagen)
@@ -438,6 +465,24 @@ namespace ProdyEcommerce
             }
         }
 
+        public void config()
+        {
+            DataTable ConfigData = new DataTable();
+            string sql = "Select * From Configuracion";
+          //  try
+         //   {
+                SqlCommand cmd = new SqlCommand(sql, cnn);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(ConfigData);
+         //   }
+         //   catch (Exception e)
+         //   {
+         //
+         //   }
+            
+
+            
+        }
         public void Grabarconfiguracion(ComboBox cblista, ComboBox cbvendedor, ComboBox cbstock, ComboBox cbmoneda, CheckBox Chbox, TextBox imagen)
         {
             string Csqlcombobox = "update configuracion set SHOPPRICELIST ='" + cblista.SelectedValue.ToString() + "'" + ",";

@@ -32,11 +32,11 @@
             this.btnsalir = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.label = new System.Windows.Forms.TabPage();
+            this.cmbsubrubro = new System.Windows.Forms.ComboBox();
+            this.cmbrubro = new System.Windows.Forms.ComboBox();
             this.txtbuscod = new System.Windows.Forms.TextBox();
             this.txtbusnom = new System.Windows.Forms.TextBox();
             this.dtgridcodigo = new System.Windows.Forms.DataGridView();
-            this.cmbsubrubro = new System.Windows.Forms.ComboBox();
-            this.cmbrubro = new System.Windows.Forms.ComboBox();
             this.txtumedida = new System.Windows.Forms.TextBox();
             this.txtprecio = new System.Windows.Forms.TextBox();
             this.txtancho = new System.Windows.Forms.TextBox();
@@ -122,11 +122,11 @@
             // 
             // label
             // 
+            this.label.Controls.Add(this.cmbsubrubro);
+            this.label.Controls.Add(this.cmbrubro);
             this.label.Controls.Add(this.txtbuscod);
             this.label.Controls.Add(this.txtbusnom);
             this.label.Controls.Add(this.dtgridcodigo);
-            this.label.Controls.Add(this.cmbsubrubro);
-            this.label.Controls.Add(this.cmbrubro);
             this.label.Controls.Add(this.txtumedida);
             this.label.Controls.Add(this.txtprecio);
             this.label.Controls.Add(this.txtancho);
@@ -154,6 +154,24 @@
             this.label.TabIndex = 0;
             this.label.Text = "Datos basicos ";
             this.label.UseVisualStyleBackColor = true;
+            // 
+            // cmbsubrubro
+            // 
+            this.cmbsubrubro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbsubrubro.FormattingEnabled = true;
+            this.cmbsubrubro.Location = new System.Drawing.Point(88, 89);
+            this.cmbsubrubro.Name = "cmbsubrubro";
+            this.cmbsubrubro.Size = new System.Drawing.Size(187, 21);
+            this.cmbsubrubro.TabIndex = 52;
+            // 
+            // cmbrubro
+            // 
+            this.cmbrubro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbrubro.FormattingEnabled = true;
+            this.cmbrubro.Location = new System.Drawing.Point(88, 61);
+            this.cmbrubro.Name = "cmbrubro";
+            this.cmbrubro.Size = new System.Drawing.Size(187, 21);
+            this.cmbrubro.TabIndex = 51;
             // 
             // txtbuscod
             // 
@@ -192,22 +210,6 @@
             this.dtgridcodigo.TabIndex = 1;
             this.dtgridcodigo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgridcodigo_CellClick);
             this.dtgridcodigo.SelectionChanged += new System.EventHandler(this.dtgridcodigo_SelectionChanged);
-            // 
-            // cmbsubrubro
-            // 
-            this.cmbsubrubro.FormattingEnabled = true;
-            this.cmbsubrubro.Location = new System.Drawing.Point(88, 93);
-            this.cmbsubrubro.Name = "cmbsubrubro";
-            this.cmbsubrubro.Size = new System.Drawing.Size(187, 21);
-            this.cmbsubrubro.TabIndex = 5;
-            // 
-            // cmbrubro
-            // 
-            this.cmbrubro.FormattingEnabled = true;
-            this.cmbrubro.Location = new System.Drawing.Point(88, 61);
-            this.cmbrubro.Name = "cmbrubro";
-            this.cmbrubro.Size = new System.Drawing.Size(187, 21);
-            this.cmbrubro.TabIndex = 4;
             // 
             // txtumedida
             // 
@@ -392,6 +394,7 @@
             this.txtnombrecod.Name = "txtnombrecod";
             this.txtnombrecod.Size = new System.Drawing.Size(318, 20);
             this.txtnombrecod.TabIndex = 3;
+            this.txtnombrecod.Leave += new System.EventHandler(this.txtnombrecod_Leave);
             // 
             // txtcodigo
             // 
@@ -401,6 +404,7 @@
             this.txtcodigo.Name = "txtcodigo";
             this.txtcodigo.Size = new System.Drawing.Size(129, 20);
             this.txtcodigo.TabIndex = 2;
+            this.txtcodigo.Leave += new System.EventHandler(this.txtcodigo_Leave);
             // 
             // tabPage2
             // 
@@ -609,7 +613,6 @@
             this.txtnombre.Name = "txtnombre";
             this.txtnombre.Size = new System.Drawing.Size(318, 20);
             this.txtnombre.TabIndex = 25;
-            this.txtnombre.TextChanged += new System.EventHandler(this.txtnombre_TextChanged);
             this.txtnombre.Leave += new System.EventHandler(this.txtnombre_Leave);
             // 
             // txtarticulo
@@ -739,7 +742,6 @@
         public System.Windows.Forms.TextBox txtcodigo;
         private System.Windows.Forms.Label lblsubrubro;
         private System.Windows.Forms.Label lblrubro;
-        private System.Windows.Forms.ComboBox cmbrubro;
         public System.Windows.Forms.TextBox txtumedida;
         public System.Windows.Forms.TextBox txtprecio;
         public System.Windows.Forms.TextBox txtancho;
@@ -754,13 +756,14 @@
         private System.Windows.Forms.Label lblprecio;
         private System.Windows.Forms.Label lblcodigoequiv;
         private System.Windows.Forms.Label lblmedida;
-        private System.Windows.Forms.ComboBox cmbsubrubro;
-        public System.Windows.Forms.DataGridView dtgridcodigo;
         public System.Windows.Forms.TextBox txtbuscod;
         public System.Windows.Forms.TextBox txtbusnom;
         private System.Windows.Forms.Button btnmodificar;
         private System.Windows.Forms.Button btnnuevo;
         private System.Windows.Forms.CheckBox chkinhabilitar;
+        public System.Windows.Forms.ComboBox cmbsubrubro;
+        public System.Windows.Forms.ComboBox cmbrubro;
+        public System.Windows.Forms.DataGridView dtgridcodigo;
     }
 }
 

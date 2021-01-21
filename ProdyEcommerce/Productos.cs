@@ -33,7 +33,6 @@ namespace ProdyEcommerce
             txtcodigo.Enabled = false;
             txtnombrecod.Enabled = false;
             cmbrubro.Enabled = false;
-            cmbsubrubro.Enabled = false;
             txtumedida.Enabled = false;
             txtcodigoequiv.Enabled = false;
             txtprecio.Enabled = false;
@@ -61,36 +60,24 @@ namespace ProdyEcommerce
         
         private void btngrabar_Click(object sender, EventArgs e)
         {
-            if(txtarticulo.Text == "" && txtnombre.Text == "")
-            {
-                MessageBox.Show("El articulo o nombre estan vacios");
-            }
-            else
-            {
-                F.Grabararticulos(txtarticulo, txttags, txtdetalles, CBPulicar, Cbpagrupado, Cbpvariable, chkrubros, listBox2, listBox1, txtnombrecod, cmbrubro, cmbsubrubro, txtumedida, txtcodigoequiv, txtalto, txtancho, txtpeso);
-                btnlimpiar_Click(null, null);
-            }
+            F.Grabararticulos(txtcodigo, txttags, txtdetalles, CBPulicar, Cbpagrupado, Cbpvariable, chkrubros, listBox2, listBox1, txtnombrecod, cmbrubro, cmbsubrubro, txtumedida, txtcodigoequiv, txtalto, txtancho, txtpeso, txtprecio, txtstock);
+            btnlimpiar_Click(null, null);
+            Form1_Load(null, null);
         }
 
         private void txtarticulo_TextChanged_1(object sender, EventArgs e)
         {
-            if (txtarticulo.Text == "")
-            {
-                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, C.cbpublicar, txtstock);
-            }
+           
+           F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, txtstock);
+            
         }
 
-        private void txtnombre_TextChanged(object sender, EventArgs e)
-        {
-            F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, C.cbpublicar, txtstock);
-        }
 
         private void txtarticulo_Leave(object sender, EventArgs e)
         {
-            if (txtnombre.Text == "")
-            {
-                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, C.cbpublicar, txtstock);
-            }
+           
+            F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, txtstock);
+            
         }
 
         private void btnlimpiar_Click(object sender, EventArgs e)
@@ -110,8 +97,6 @@ namespace ProdyEcommerce
             txtprecio.Text = "";
             Cbpagrupado.Checked = false;
             CBPulicar.Checked = false;
-            txtarticulo.Enabled = true;
-            txtnombre.Enabled = true;
             btnbuscar.Enabled = true;
             chkrubros.DataSource = null;
             chkrubros.Items.Clear();
@@ -174,7 +159,7 @@ namespace ProdyEcommerce
         {
             if (string.IsNullOrEmpty(txtarticulo.Text) == true)
             {
-                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, C.cbpublicar, txtstock);
+                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, txtstock);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
             }
@@ -216,7 +201,6 @@ namespace ProdyEcommerce
             txtcodigo.Enabled = true;
             txtnombrecod.Enabled = true;
             cmbrubro.Enabled = true;
-            cmbsubrubro.Enabled = true;
             txtumedida.Enabled = true;
             txtcodigoequiv.Enabled = true;
             txtprecio.Enabled = true;
@@ -233,6 +217,29 @@ namespace ProdyEcommerce
             btngrabar.Enabled = true;
             btnlimpiar.Enabled = true;
             btnbuscar.Enabled = false;
+            txtcodigo.Focus();
+
+            DataTable dt = new DataTable();
+
+            string consultarubros = "select idRubro, Nombre from rubros order by nombre asc";
+            cmd = new SqlCommand(consultarubros, cnn);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+
+            cmbrubro.DataSource = dt;
+            cmbrubro.DisplayMember = "Nombre";
+            cmbrubro.ValueMember = "idRubro";
+
+            DataTable dt1 = new DataTable();
+
+            string consultasubrubros = "select idsubRubro, Nombre from subrubros order by nombre asc";
+            cmd = new SqlCommand(consultasubrubros, cnn);
+            SqlDataAdapter da1 = new SqlDataAdapter(cmd);
+            da1.Fill(dt1);
+
+            cmbsubrubro.DataSource = dt1;
+            cmbsubrubro.DisplayMember = "Nombre";
+            cmbsubrubro.ValueMember = "idsubRubro";
         }
 
         private void dtgridcodigo_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -257,11 +264,22 @@ namespace ProdyEcommerce
             txtnombrecod.Text = row.Cells["Nombre"].Value.ToString();
             txtarticulo.Text = row.Cells["Codigo"].Value.ToString();
             txtnombre.Text = row.Cells["Nombre"].Value.ToString();
+
         }
 
         private void txtprecio_Validated(object sender, EventArgs e)
         {
             F.FormatoMoneda(txtprecio);
+        }
+
+        private void txtcodigo_Leave(object sender, EventArgs e)
+        {
+            txtarticulo.Text = txtcodigo.Text;
+        }
+
+        private void txtnombrecod_Leave(object sender, EventArgs e)
+        {
+            txtnombre.Text = txtnombrecod.Text;
         }
     }
 }

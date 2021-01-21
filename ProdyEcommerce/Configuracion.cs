@@ -17,11 +17,13 @@ namespace ProdyEcommerce
             InitializeComponent();
         }
 
+        
         Funciones F = new Funciones();
         Contraseña C = new Contraseña();
         public void Configuracion_Load(object sender, EventArgs e)
         {
             F.Llenarconfiguracion(cbpublicar, cbvendedor, cbstock, cbmoneda, chbreserva, txtimagen);
+
         }
 
         private void Btngrabar_Click_1(object sender, EventArgs e)
