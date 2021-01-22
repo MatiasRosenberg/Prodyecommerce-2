@@ -228,6 +228,7 @@
             this.txtprecio.Name = "txtprecio";
             this.txtprecio.Size = new System.Drawing.Size(129, 20);
             this.txtprecio.TabIndex = 8;
+            this.txtprecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtprecio_KeyPress);
             this.txtprecio.Validated += new System.EventHandler(this.txtprecio_Validated);
             // 
             // txtancho
@@ -238,6 +239,7 @@
             this.txtancho.Name = "txtancho";
             this.txtancho.Size = new System.Drawing.Size(129, 20);
             this.txtancho.TabIndex = 12;
+            this.txtancho.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtancho_KeyPress);
             // 
             // txtalto
             // 
@@ -247,6 +249,7 @@
             this.txtalto.Name = "txtalto";
             this.txtalto.Size = new System.Drawing.Size(129, 20);
             this.txtalto.TabIndex = 11;
+            this.txtalto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtalto_KeyPress);
             // 
             // txtpeso
             // 
@@ -256,6 +259,7 @@
             this.txtpeso.Name = "txtpeso";
             this.txtpeso.Size = new System.Drawing.Size(129, 20);
             this.txtpeso.TabIndex = 10;
+            this.txtpeso.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtpeso_KeyPress);
             // 
             // txtstock
             // 
@@ -265,6 +269,7 @@
             this.txtstock.Name = "txtstock";
             this.txtstock.Size = new System.Drawing.Size(129, 20);
             this.txtstock.TabIndex = 9;
+            this.txtstock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtstock_KeyPress);
             // 
             // txtcodigoequiv
             // 
@@ -404,6 +409,7 @@
             this.txtcodigo.Name = "txtcodigo";
             this.txtcodigo.Size = new System.Drawing.Size(129, 20);
             this.txtcodigo.TabIndex = 2;
+            this.txtcodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcodigo_KeyPress);
             this.txtcodigo.Leave += new System.EventHandler(this.txtcodigo_Leave);
             // 
             // tabPage2

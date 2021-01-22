@@ -25,7 +25,7 @@ namespace ProdyEcommerce
 
 
         private void Form1_Load(object sender, EventArgs e)
-        {
+        {       
 
             Funciones F = new Funciones();
             F.Llenardatagrid(dtgridcodigo);
@@ -33,6 +33,7 @@ namespace ProdyEcommerce
             txtcodigo.Enabled = false;
             txtnombrecod.Enabled = false;
             cmbrubro.Enabled = false;
+            cmbsubrubro.Enabled = false;
             txtumedida.Enabled = false;
             txtcodigoequiv.Enabled = false;
             txtprecio.Enabled = false;
@@ -201,6 +202,7 @@ namespace ProdyEcommerce
             txtcodigo.Enabled = true;
             txtnombrecod.Enabled = true;
             cmbrubro.Enabled = true;
+            cmbsubrubro.Enabled = true;
             txtumedida.Enabled = true;
             txtcodigoequiv.Enabled = true;
             txtprecio.Enabled = true;
@@ -219,27 +221,7 @@ namespace ProdyEcommerce
             btnbuscar.Enabled = false;
             txtcodigo.Focus();
 
-            DataTable dt = new DataTable();
-
-            string consultarubros = "select idRubro, Nombre from rubros order by nombre asc";
-            cmd = new SqlCommand(consultarubros, cnn);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
-
-            cmbrubro.DataSource = dt;
-            cmbrubro.DisplayMember = "Nombre";
-            cmbrubro.ValueMember = "idRubro";
-
-            DataTable dt1 = new DataTable();
-
-            string consultasubrubros = "select idsubRubro, Nombre from subrubros order by nombre asc";
-            cmd = new SqlCommand(consultasubrubros, cnn);
-            SqlDataAdapter da1 = new SqlDataAdapter(cmd);
-            da1.Fill(dt1);
-
-            cmbsubrubro.DataSource = dt1;
-            cmbsubrubro.DisplayMember = "Nombre";
-            cmbsubrubro.ValueMember = "idsubRubro";
+            F.rubroysub(cmbrubro, cmbsubrubro);
         }
 
         private void dtgridcodigo_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -274,12 +256,68 @@ namespace ProdyEcommerce
 
         private void txtcodigo_Leave(object sender, EventArgs e)
         {
+            string Csql = "select artnumerico,LongCodArt from configuracion";
+            cmd = new SqlCommand(Csql, cnn);
+            SqlDataReader read = cmd.ExecuteReader();
+            if (read.Read() == true)
+            {
+                if (read["artnumerico"].ToString() == "1")
+                {
+                    F.Completarcon0(txtcodigo, txtcodigo);
+                }
+            }
             txtarticulo.Text = txtcodigo.Text;
+            F.rubroysub(cmbrubro, cmbsubrubro);
         }
 
         private void txtnombrecod_Leave(object sender, EventArgs e)
         {
             txtnombre.Text = txtnombrecod.Text;
+        }
+
+        private void txtprecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            F.Solonumeros(e);
+        }
+
+        private void txtstock_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            F.Solonumeros(e);
+        }
+
+        private void txtpeso_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            F.Solonumeros(e);
+        }
+
+        private void txtalto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            F.Solonumeros(e);
+        }
+
+        private void txtancho_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            F.Solonumeros(e);
+        }
+
+        private void txtcodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string Csql = "select artnumerico,LongCodArt from configuracion";
+            cmd = new SqlCommand(Csql, cnn);
+            SqlDataReader read = cmd.ExecuteReader();
+            if(read.Read() == true)
+            {
+                if (read["artnumerico"].ToString() == "0")
+                {
+                    txtcodigo.MaxLength = Convert.ToInt32(read["LongCodArt"].ToString());
+                }
+                else if (read["artnumerico"].ToString() == "1")
+                {
+                    txtcodigo.MaxLength = Convert.ToInt32(read["LongCodArt"].ToString());
+                    F.Solonumeros(e);
+                }
+            }
+            
         }
     }
 }

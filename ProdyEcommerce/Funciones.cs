@@ -88,7 +88,7 @@ namespace ProdyEcommerce
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(ConfigData);
 
-            cmd = new SqlCommand("Select nombre, idarticulo, UniMedi, WOO_DETALLE, CodEquiv, Peso, isnull(Alto, 0) Alto, isnull(Ancho, 0) Ancho  from articulos where idarticulo='" + cajaidarticulo.Text + "'", cnn);
+            cmd = new SqlCommand("Select nombre, idarticulo, UniMedi, isnull(WOO_DETALLE, '') WOO_DETALLE, CodEquiv, Peso, isnull(Alto, 0) Alto, isnull(Ancho, 0) Ancho  from articulos where idarticulo='" + cajaidarticulo.Text + "'", cnn);
             SqlDataReader read = cmd.ExecuteReader();
             cmd = new SqlCommand("Select TAGS from ecomm_tags where idarticulo='" + cajaidarticulo.Text + "'", cnn);
             SqlDataReader read1 = cmd.ExecuteReader();
@@ -128,7 +128,7 @@ namespace ProdyEcommerce
             cmd = new SqlCommand(Csql, cnn);
             SqlDataReader read2 = cmd.ExecuteReader();
 
-            string CsqlCheck = "select isnull(woo_agrupado, 0) agrupado , publicarweb, woo_variable from articulos where idarticulo ='" + cajaidarticulo.Text + "'";
+            string CsqlCheck = "select isnull(woo_agrupado, 0) agrupado , isnull(publicarweb, 0) as publicarweb, isnull(woo_variable, 0) as woo_variable from articulos where idarticulo ='" + cajaidarticulo.Text + "'";
             cmd = new SqlCommand(CsqlCheck, cnn);
             SqlDataReader read3 = cmd.ExecuteReader();
 
@@ -704,6 +704,57 @@ namespace ProdyEcommerce
             }
         }
 
+        public void Solonumeros(KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+
+                e.Handled = true;
+
+                return;
+            }
+        }
+
+        public void Completarcon0(TextBox Codigo, TextBox codigo2)
+        {
+            string Csql = "select artnumerico,LongCodArt from configuracion";
+            cmd = new SqlCommand(Csql, cnn);
+            SqlDataReader read = cmd.ExecuteReader();
+            if (read.Read() == true)
+            {
+                string cuantos0 = read["LongCodArt"].ToString();
+                string zeros;
+                zeros = new string('0', Convert.ToInt32(cuantos0));
+
+                Codigo.Text = string.Format("{0:" + zeros + "}", Convert.ToInt32(codigo2.Text));
+            }
+            
+        }
+
+        public void rubroysub(ComboBox rubro, ComboBox subrubo)
+        {
+            DataTable dt = new DataTable();
+
+            string consultarubros = "select idRubro, Nombre from rubros order by nombre asc";
+            cmd = new SqlCommand(consultarubros, cnn);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+
+            rubro.DataSource = dt;
+            rubro.DisplayMember = "Nombre";
+            rubro.ValueMember = "idRubro";
+
+            DataTable dt1 = new DataTable();
+
+            string consultasubrubros = "select idsubRubro, Nombre from subrubros order by nombre asc";
+            cmd = new SqlCommand(consultasubrubros, cnn);
+            SqlDataAdapter da1 = new SqlDataAdapter(cmd);
+            da1.Fill(dt1);
+
+            subrubo.DataSource = dt1;
+            subrubo.DisplayMember = "Nombre";
+            subrubo.ValueMember = "idsubRubro";
+        }
     }
 }
 
