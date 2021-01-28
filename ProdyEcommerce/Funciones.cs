@@ -110,7 +110,7 @@ namespace ProdyEcommerce
             DataTable rubro = new DataTable();
             da.Fill(rubro);
 
-            string Csqlsubrubros = "select articulos.IdArticulo as idarticulo , subrubros.IdSubRubro as subrubro, subrubros.Nombre as nombre from Subrubros left join Articulos on  subrubros.IdSubRubro = articulos.idrubro where idarticulo = '" + cajaidarticulo.Text + "'" + " order by nombre asc";
+            string Csqlsubrubros = "select articulos.IdArticulo as idarticulo , subrubros.IdSubRubro as subrubro, subrubros.Nombre as nombre from Subrubros left join Articulos on  subrubros.IdSubRubro = articulos.idsubrubro where idarticulo = '" + cajaidarticulo.Text + "'" + " order by nombre asc";
             da = new SqlDataAdapter(Csqlsubrubros, cnn);
             DataTable subrubro = new DataTable();
             da.Fill(subrubro);
@@ -301,7 +301,7 @@ namespace ProdyEcommerce
             string Csqllistaartd = "delete from ARTICULOSJERARQUIAS where IDARTICULOFATHER='" + idarticulo.Text + "'";
             string Csqlipbasico = "insert into articulos (idarticulo, idarticulobarra , nombre, idrubro, idsubrubro, UniMedi, codequiv, alto, ancho, peso, idclase) values(" + "'" + idarticulo.Text + "'" + "," + "'" + idarticulo.Text + "'" + "," + "'" + nombre.Text + "'" + "," + "'" + rubro.SelectedValue.ToString() + "'" + "," + "'" + subrubro.SelectedValue.ToString() + "'" + "," + "'" + umedida.Text + "'" + "," + "'" + codeqvuiv.Text + "'" + "," + "'" + alto.Text + "'" + "," + "'" + ancho.Text + "'" + "," + "'" + peso.Text + "'" + "," + "'" + "0001" + "'" + ")";
             string Csqlipreciob = "insert into precios(idarticulobarra, idarticulo, idlista, precio, porcentaje, idmoneda) values (" + "'" + idarticulo.Text + "'" + "," + "'" + idarticulo.Text + "'" + "," + "'" + ConfigData.Rows[0]["SHOPPRICELIST"].ToString() + "'" + "," + "'" + precio.Text + "'" + "," + "'" + "0" + "'" + "," + "'" + ConfigData.Rows[0]["SHOPIDMONEDA"].ToString() + "'" + ")";
-            string Csqlistock = "insert into stock (idarticulobarra, idarticulo, iddeposito, cantidad) values (" + "'" + idarticulo.Text + "'" + "," + "'" + idarticulo.Text + "'" + "," + "'" + ConfigData.Rows[0]["SHOPSTOCKID"].ToString() + "'" + "," + "'" + cantidad + "'" + ")";
+            string Csqlistock = "insert into stock (idarticulobarra, idarticulo, iddeposito, cantidad) values (" + "'" + idarticulo.Text + "'" + "," + "'" + idarticulo.Text + "'" + "," + "'" + ConfigData.Rows[0]["SHOPSTOCKID"].ToString() + "'" + "," + "'" + cantidad.Text + "'" + ")";
 
             cmd = new SqlCommand(Csqlrubros, cnn);
             SqlDataReader read = cmd.ExecuteReader();
@@ -755,6 +755,8 @@ namespace ProdyEcommerce
             subrubo.DisplayMember = "Nombre";
             subrubo.ValueMember = "idsubRubro";
         }
+
+        
     }
 }
 

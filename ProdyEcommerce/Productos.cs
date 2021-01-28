@@ -51,6 +51,12 @@ namespace ProdyEcommerce
             txttags.Enabled = false;
             btngrabar.Enabled = false;
             btnlimpiar.Enabled = false;
+            txtlistart.Enabled = false;
+            Cbpagrupado.Enabled = false;
+            CBPulicar.Enabled = false;
+            Cbpvariable.Enabled = false;
+            chkrubros.Enabled = false;
+            chkinhabilitar.Enabled = false;
         }
 
         private void btnsalir_Click(object sender, EventArgs e)
@@ -64,6 +70,7 @@ namespace ProdyEcommerce
             F.Grabararticulos(txtcodigo, txttags, txtdetalles, CBPulicar, Cbpagrupado, Cbpvariable, chkrubros, listBox2, listBox1, txtnombrecod, cmbrubro, cmbsubrubro, txtumedida, txtcodigoequiv, txtalto, txtancho, txtpeso, txtprecio, txtstock);
             btnlimpiar_Click(null, null);
             Form1_Load(null, null);
+            F.Llenardatagrid(dtgridcodigo);
         }
 
         private void txtarticulo_TextChanged_1(object sender, EventArgs e)
@@ -107,6 +114,15 @@ namespace ProdyEcommerce
             listBox2.Items.Clear();
             txtbuscod.Text = "";
             txtbusnom.Text = "";
+            dtgridcodigo.Enabled = true;
+            txtbuscod.Enabled = true;
+            txtbusnom.Enabled = true;
+            txtlistart.Enabled = true;
+            Cbpagrupado.Enabled = true;
+            CBPulicar.Enabled = true;
+            Cbpvariable.Enabled = true;
+            chkrubros.Enabled = true;
+            chkinhabilitar.Enabled = true;
             txtcodigo.Focus();
         }
 
@@ -199,6 +215,9 @@ namespace ProdyEcommerce
         private void btnnuevo_Click(object sender, EventArgs e)
         {
             btnlimpiar_Click(null, null);
+            dtgridcodigo.Enabled = false;
+            txtbuscod.Enabled = false;
+            txtbusnom.Enabled = false;
             txtcodigo.Enabled = true;
             txtnombrecod.Enabled = true;
             cmbrubro.Enabled = true;
@@ -318,6 +337,56 @@ namespace ProdyEcommerce
                 }
             }
             
+        }
+
+        private void txtpeso_Validated(object sender, EventArgs e)
+        {
+            F.FormatoMoneda(txtprecio);
+        }
+
+        private void txtalto_Validated(object sender, EventArgs e)
+        {
+            F.FormatoMoneda(txtprecio);
+        }
+
+        private void txtancho_Validated(object sender, EventArgs e)
+        {
+            F.FormatoMoneda(txtprecio);
+        }
+
+        private void btnmodificar_Click(object sender, EventArgs e)
+        {
+            dtgridcodigo.Enabled = false;
+            txtbuscod.Enabled = false;
+            txtbusnom.Enabled = false;
+            txtnombrecod.Enabled = true;
+            cmbrubro.Enabled = true;
+            cmbsubrubro.Enabled = true;
+            txtumedida.Enabled = true;
+            txtcodigoequiv.Enabled = true;
+            txtprecio.Enabled = true;
+            txtstock.Enabled = true;
+            txtpeso.Enabled = true;
+            txtalto.Enabled = true;
+            txtancho.Enabled = true;
+            txtdetalles.Enabled = true;
+            txtdetalles.Enabled = true;
+            chkrubros.Enabled = true;
+            listBox1.Enabled = true;
+            listBox2.Enabled = true;
+            txttags.Enabled = true;
+            btngrabar.Enabled = true;
+            btnlimpiar.Enabled = true;
+            btnbuscar.Enabled = false;
+            txtlistart.Enabled = true;
+            Cbpagrupado.Enabled = true;
+            CBPulicar.Enabled = true;
+            Cbpvariable.Enabled = true;
+            chkrubros.Enabled = true;
+            chkinhabilitar.Enabled = true;
+            txtnombrecod.Focus();
+
+            F.rubroysub(cmbrubro, cmbsubrubro);
         }
     }
 }

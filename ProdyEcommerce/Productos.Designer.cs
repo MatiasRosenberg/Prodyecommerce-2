@@ -94,7 +94,7 @@
             this.btngrabar.Location = new System.Drawing.Point(503, 635);
             this.btngrabar.Name = "btngrabar";
             this.btngrabar.Size = new System.Drawing.Size(87, 32);
-            this.btngrabar.TabIndex = 10;
+            this.btngrabar.TabIndex = 16;
             this.btngrabar.Text = "&Grabar";
             this.btngrabar.UseVisualStyleBackColor = true;
             this.btngrabar.Click += new System.EventHandler(this.btngrabar_Click);
@@ -105,7 +105,7 @@
             this.btnsalir.Location = new System.Drawing.Point(689, 634);
             this.btnsalir.Name = "btnsalir";
             this.btnsalir.Size = new System.Drawing.Size(87, 32);
-            this.btnsalir.TabIndex = 11;
+            this.btnsalir.TabIndex = 18;
             this.btnsalir.Text = "&Salir";
             this.btnsalir.UseVisualStyleBackColor = true;
             this.btnsalir.Click += new System.EventHandler(this.btnsalir_Click);
@@ -162,7 +162,7 @@
             this.cmbsubrubro.Location = new System.Drawing.Point(88, 89);
             this.cmbsubrubro.Name = "cmbsubrubro";
             this.cmbsubrubro.Size = new System.Drawing.Size(187, 21);
-            this.cmbsubrubro.TabIndex = 52;
+            this.cmbsubrubro.TabIndex = 5;
             // 
             // cmbrubro
             // 
@@ -171,7 +171,7 @@
             this.cmbrubro.Location = new System.Drawing.Point(88, 61);
             this.cmbrubro.Name = "cmbrubro";
             this.cmbrubro.Size = new System.Drawing.Size(187, 21);
-            this.cmbrubro.TabIndex = 51;
+            this.cmbrubro.TabIndex = 4;
             // 
             // txtbuscod
             // 
@@ -240,6 +240,7 @@
             this.txtancho.Size = new System.Drawing.Size(129, 20);
             this.txtancho.TabIndex = 12;
             this.txtancho.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtancho_KeyPress);
+            this.txtancho.Validated += new System.EventHandler(this.txtancho_Validated);
             // 
             // txtalto
             // 
@@ -250,6 +251,7 @@
             this.txtalto.Size = new System.Drawing.Size(129, 20);
             this.txtalto.TabIndex = 11;
             this.txtalto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtalto_KeyPress);
+            this.txtalto.Validated += new System.EventHandler(this.txtalto_Validated);
             // 
             // txtpeso
             // 
@@ -260,6 +262,7 @@
             this.txtpeso.Size = new System.Drawing.Size(129, 20);
             this.txtpeso.TabIndex = 10;
             this.txtpeso.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtpeso_KeyPress);
+            this.txtpeso.Validated += new System.EventHandler(this.txtpeso_Validated);
             // 
             // txtstock
             // 
@@ -448,7 +451,7 @@
             this.chkinhabilitar.Location = new System.Drawing.Point(472, 59);
             this.chkinhabilitar.Name = "chkinhabilitar";
             this.chkinhabilitar.Size = new System.Drawing.Size(116, 17);
-            this.chkinhabilitar.TabIndex = 44;
+            this.chkinhabilitar.TabIndex = 14;
             this.chkinhabilitar.Text = "Inhabilitar producto";
             this.chkinhabilitar.UseVisualStyleBackColor = true;
             // 
@@ -458,7 +461,7 @@
             this.btnsyncp.Location = new System.Drawing.Point(336, 53);
             this.btnsyncp.Name = "btnsyncp";
             this.btnsyncp.Size = new System.Drawing.Size(130, 26);
-            this.btnsyncp.TabIndex = 43;
+            this.btnsyncp.TabIndex = 13;
             this.btnsyncp.Text = "S&yncronizar producto";
             this.btnsyncp.UseVisualStyleBackColor = true;
             this.btnsyncp.Click += new System.EventHandler(this.btnsyncp_Click);
@@ -478,7 +481,7 @@
             this.txtlistart.Location = new System.Drawing.Point(230, 333);
             this.txtlistart.Name = "txtlistart";
             this.txtlistart.Size = new System.Drawing.Size(236, 20);
-            this.txtlistart.TabIndex = 41;
+            this.txtlistart.TabIndex = 20;
             this.txtlistart.TextChanged += new System.EventHandler(this.txtlistart_TextChanged);
             // 
             // button2
@@ -486,7 +489,7 @@
             this.button2.Location = new System.Drawing.Point(472, 429);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(28, 24);
-            this.button2.TabIndex = 40;
+            this.button2.TabIndex = 23;
             this.button2.Text = "<";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -496,7 +499,7 @@
             this.button1.Location = new System.Drawing.Point(472, 376);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(28, 24);
-            this.button1.TabIndex = 39;
+            this.button1.TabIndex = 22;
             this.button1.Text = ">";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -510,7 +513,7 @@
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(235, 172);
             this.listBox2.Sorted = true;
-            this.listBox2.TabIndex = 38;
+            this.listBox2.TabIndex = 24;
             this.listBox2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox2_MouseDoubleClick);
             // 
             // listBox1
@@ -522,7 +525,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(236, 148);
             this.listBox1.Sorted = true;
-            this.listBox1.TabIndex = 37;
+            this.listBox1.TabIndex = 21;
             this.listBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDoubleClick);
             // 
             // Cbpvariable
@@ -531,7 +534,7 @@
             this.Cbpvariable.Location = new System.Drawing.Point(725, 59);
             this.Cbpvariable.Name = "Cbpvariable";
             this.Cbpvariable.Size = new System.Drawing.Size(109, 17);
-            this.Cbpvariable.TabIndex = 36;
+            this.Cbpvariable.TabIndex = 16;
             this.Cbpvariable.Text = "Producto variable";
             this.Cbpvariable.UseVisualStyleBackColor = true;
             // 
@@ -541,7 +544,7 @@
             this.Cbpagrupado.Location = new System.Drawing.Point(603, 59);
             this.Cbpagrupado.Name = "Cbpagrupado";
             this.Cbpagrupado.Size = new System.Drawing.Size(117, 17);
-            this.Cbpagrupado.TabIndex = 35;
+            this.Cbpagrupado.TabIndex = 15;
             this.Cbpagrupado.Text = "Producto agrupado";
             this.Cbpagrupado.UseVisualStyleBackColor = true;
             // 
@@ -551,7 +554,7 @@
             this.CBPulicar.Location = new System.Drawing.Point(840, 59);
             this.CBPulicar.Name = "CBPulicar";
             this.CBPulicar.Size = new System.Drawing.Size(87, 17);
-            this.CBPulicar.TabIndex = 34;
+            this.CBPulicar.TabIndex = 17;
             this.CBPulicar.Text = "Publicar web";
             this.CBPulicar.UseVisualStyleBackColor = true;
             // 
@@ -571,7 +574,7 @@
             this.txttags.Multiline = true;
             this.txttags.Name = "txttags";
             this.txttags.Size = new System.Drawing.Size(170, 111);
-            this.txttags.TabIndex = 31;
+            this.txttags.TabIndex = 25;
             // 
             // lblRubrosEco
             // 
@@ -589,7 +592,7 @@
             this.chkrubros.Location = new System.Drawing.Point(27, 333);
             this.chkrubros.Name = "chkrubros";
             this.chkrubros.Size = new System.Drawing.Size(197, 169);
-            this.chkrubros.TabIndex = 30;
+            this.chkrubros.TabIndex = 19;
             // 
             // txtdetalles
             // 
@@ -598,7 +601,7 @@
             this.txtdetalles.Multiline = true;
             this.txtdetalles.Name = "txtdetalles";
             this.txtdetalles.Size = new System.Drawing.Size(900, 199);
-            this.txtdetalles.TabIndex = 29;
+            this.txtdetalles.TabIndex = 18;
             // 
             // lbldetalle
             // 
@@ -649,7 +652,7 @@
             this.btnlimpiar.Location = new System.Drawing.Point(596, 635);
             this.btnlimpiar.Name = "btnlimpiar";
             this.btnlimpiar.Size = new System.Drawing.Size(87, 32);
-            this.btnlimpiar.TabIndex = 28;
+            this.btnlimpiar.TabIndex = 17;
             this.btnlimpiar.Text = "&Limpiar";
             this.btnlimpiar.UseVisualStyleBackColor = true;
             this.btnlimpiar.Click += new System.EventHandler(this.btnlimpiar_Click);
@@ -660,7 +663,7 @@
             this.btnbuscar.Location = new System.Drawing.Point(411, 635);
             this.btnbuscar.Name = "btnbuscar";
             this.btnbuscar.Size = new System.Drawing.Size(86, 32);
-            this.btnbuscar.TabIndex = 26;
+            this.btnbuscar.TabIndex = 15;
             this.btnbuscar.Text = "&Buscar";
             this.btnbuscar.UseVisualStyleBackColor = true;
             this.btnbuscar.Click += new System.EventHandler(this.btnbuscar_Click);
@@ -671,9 +674,10 @@
             this.btnmodificar.Location = new System.Drawing.Point(318, 635);
             this.btnmodificar.Name = "btnmodificar";
             this.btnmodificar.Size = new System.Drawing.Size(87, 32);
-            this.btnmodificar.TabIndex = 24;
+            this.btnmodificar.TabIndex = 14;
             this.btnmodificar.Text = "&Modificar";
             this.btnmodificar.UseVisualStyleBackColor = true;
+            this.btnmodificar.Click += new System.EventHandler(this.btnmodificar_Click);
             // 
             // btnnuevo
             // 
@@ -681,7 +685,7 @@
             this.btnnuevo.Location = new System.Drawing.Point(225, 635);
             this.btnnuevo.Name = "btnnuevo";
             this.btnnuevo.Size = new System.Drawing.Size(87, 32);
-            this.btnnuevo.TabIndex = 25;
+            this.btnnuevo.TabIndex = 13;
             this.btnnuevo.Text = "&Nuevo";
             this.btnnuevo.UseVisualStyleBackColor = true;
             this.btnnuevo.Click += new System.EventHandler(this.btnnuevo_Click);
