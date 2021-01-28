@@ -64,10 +64,21 @@ namespace ProdyEcommerce
             this.Close();
         }
         Busqueda_avanzada busqueda = new Busqueda_avanzada();
-        
+
+        private bool btnnuevoFuePresionado = false;
+        private bool btnmodificarfuepresionado = false;
+
         private void btngrabar_Click(object sender, EventArgs e)
         {
-            F.Grabararticulos(txtcodigo, txttags, txtdetalles, CBPulicar, Cbpagrupado, Cbpvariable, chkrubros, listBox2, listBox1, txtnombrecod, cmbrubro, cmbsubrubro, txtumedida, txtcodigoequiv, txtalto, txtancho, txtpeso, txtprecio, txtstock);
+            if(btnnuevoFuePresionado == true)
+            {
+                F.Grabararticulos(txtcodigo, txttags, txtdetalles, CBPulicar, Cbpagrupado, Cbpvariable, chkrubros, listBox2, listBox1, txtnombrecod, cmbrubro, cmbsubrubro, txtumedida, txtcodigoequiv, txtalto, txtancho, txtpeso, txtprecio, txtstock, chkinhabilitar);
+
+            }
+            else if (btnmodificarfuepresionado == true)
+            {
+                F.Modificarproductos(txtcodigo, txttags, txtdetalles, CBPulicar, Cbpagrupado, Cbpvariable, chkrubros, listBox2, listBox1, txtnombrecod, cmbrubro, cmbsubrubro, txtumedida, txtcodigoequiv, txtalto, txtancho, txtpeso, txtprecio, txtstock, chkinhabilitar);
+            }
             btnlimpiar_Click(null, null);
             Form1_Load(null, null);
             F.Llenardatagrid(dtgridcodigo);
@@ -76,7 +87,7 @@ namespace ProdyEcommerce
         private void txtarticulo_TextChanged_1(object sender, EventArgs e)
         {
            
-           F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, txtstock);
+           F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, txtstock, chkinhabilitar);
             
         }
 
@@ -84,12 +95,14 @@ namespace ProdyEcommerce
         private void txtarticulo_Leave(object sender, EventArgs e)
         {
            
-            F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, txtstock);
+            F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, txtstock, chkinhabilitar);
             
         }
 
         private void btnlimpiar_Click(object sender, EventArgs e)
         {
+            btnnuevoFuePresionado = false;
+            btnmodificarfuepresionado = false;
             txtcodigo.Text = "";
             txtnombrecod.Text = "";
             txtumedida.Text = "";
@@ -123,6 +136,7 @@ namespace ProdyEcommerce
             Cbpvariable.Enabled = true;
             chkrubros.Enabled = true;
             chkinhabilitar.Enabled = true;
+            txtprecio.Text = "";
             txtcodigo.Focus();
         }
 
@@ -176,7 +190,7 @@ namespace ProdyEcommerce
         {
             if (string.IsNullOrEmpty(txtarticulo.Text) == true)
             {
-                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, txtstock);
+                F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, txtstock, chkinhabilitar);
                 txtarticulo.Enabled = false;
                 txtnombre.Enabled = false;
             }
@@ -215,6 +229,7 @@ namespace ProdyEcommerce
         private void btnnuevo_Click(object sender, EventArgs e)
         {
             btnlimpiar_Click(null, null);
+            btnnuevoFuePresionado = true;
             dtgridcodigo.Enabled = false;
             txtbuscod.Enabled = false;
             txtbusnom.Enabled = false;
@@ -356,6 +371,7 @@ namespace ProdyEcommerce
 
         private void btnmodificar_Click(object sender, EventArgs e)
         {
+            btnmodificarfuepresionado = true;
             dtgridcodigo.Enabled = false;
             txtbuscod.Enabled = false;
             txtbusnom.Enabled = false;

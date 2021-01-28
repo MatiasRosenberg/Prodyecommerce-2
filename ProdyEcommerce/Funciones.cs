@@ -80,7 +80,7 @@ namespace ProdyEcommerce
 
         }
 
-        public void Llenarproductos(TextBox cajanombre, TextBox cajadetalle, TextBox cajatags, CheckedListBox listarubros, TextBox cajaidarticulo, TextBox cajaumedida, TextBox codequiv, TextBox cajapeso, TextBox cajaalto, TextBox cajaancho, CheckBox checkweb, CheckBox Checkvariable, CheckBox agrupar, ListBox lista1, ListBox lista2, TextBox Precios, ComboBox cbrubros, ComboBox cbsubrubros, TextBox cajastock)
+        public void Llenarproductos(TextBox cajanombre, TextBox cajadetalle, TextBox cajatags, CheckedListBox listarubros, TextBox cajaidarticulo, TextBox cajaumedida, TextBox codequiv, TextBox cajapeso, TextBox cajaalto, TextBox cajaancho, CheckBox checkweb, CheckBox Checkvariable, CheckBox agrupar, ListBox lista1, ListBox lista2, TextBox Precios, ComboBox cbrubros, ComboBox cbsubrubros, TextBox cajastock, CheckBox InHabilitado)
         {
             DataTable ConfigData = new DataTable();
             string sql = "Select * From Configuracion";
@@ -128,7 +128,7 @@ namespace ProdyEcommerce
             cmd = new SqlCommand(Csql, cnn);
             SqlDataReader read2 = cmd.ExecuteReader();
 
-            string CsqlCheck = "select isnull(woo_agrupado, 0) agrupado , isnull(publicarweb, 0) as publicarweb, isnull(woo_variable, 0) as woo_variable from articulos where idarticulo ='" + cajaidarticulo.Text + "'";
+            string CsqlCheck = "select isnull(woo_agrupado, 0) agrupado , isnull(InHabilitado, 0) InHabilitado, isnull(publicarweb, 0) as publicarweb, isnull(woo_variable, 0) as woo_variable from articulos where idarticulo ='" + cajaidarticulo.Text + "'";
             cmd = new SqlCommand(CsqlCheck, cnn);
             SqlDataReader read3 = cmd.ExecuteReader();
 
@@ -235,12 +235,14 @@ namespace ProdyEcommerce
                 checkweb.Checked = Convert.ToBoolean(read3["publicarweb"]);
                 Checkvariable.Checked = Convert.ToBoolean(read3["woo_Variable"]);
                 agrupar.Checked = Convert.ToBoolean(read3["agrupado"]);
+                InHabilitado.Checked = Convert.ToBoolean(read3["InHabilitado"]);
             }
             else
             {
                 checkweb.Checked = false;
                 Checkvariable.Checked = false;
                 agrupar.Checked = false;
+                InHabilitado.Checked = false;
             }
 
             if(read5.Read() == true)
@@ -281,7 +283,7 @@ namespace ProdyEcommerce
             }
         }
 
-        public void Grabararticulos(TextBox idarticulo, TextBox txttags, TextBox txtdetalle, CheckBox CBweb, CheckBox CBgroup, CheckBox CBvariable, CheckedListBox listarubros, ListBox lista2, ListBox lista1, TextBox nombre, ComboBox rubro, ComboBox subrubro, TextBox umedida, TextBox codeqvuiv, TextBox alto, TextBox ancho, TextBox peso, TextBox precio, TextBox cantidad)
+        public void Grabararticulos(TextBox idarticulo, TextBox txttags, TextBox txtdetalle, CheckBox CBweb, CheckBox CBgroup, CheckBox CBvariable, CheckedListBox listarubros, ListBox lista2, ListBox lista1, TextBox nombre, ComboBox rubro, ComboBox subrubro, TextBox umedida, TextBox codeqvuiv, TextBox alto, TextBox ancho, TextBox peso, TextBox precio, TextBox cantidad, CheckBox InHabilitado)
         {
 
             DataTable ConfigData = new DataTable();
@@ -293,19 +295,16 @@ namespace ProdyEcommerce
 
             string cSqldelete = "delete from ecomm_tags  where idarticulo ='" + idarticulo.Text + "'";
             string cSqlinserttags = "insert into ecomm_tags (idarticulo, tags) values(" + "'" + idarticulo.Text + "'" + "," + "'" + txttags.Text + "'" + ")";
-            string Csql = "update articulos set WOO_DETALLE='" + txtdetalle.Text + "'" + ",";
-            Csql = Csql + "publicarweb=" + Convert.ToInt16(CBweb.Checked) + ",";
-            Csql = Csql + "woo_variable=" + Convert.ToInt16(CBvariable.Checked) + ",";
-            Csql = Csql + "woo_agrupado=" + Convert.ToInt16(CBgroup.Checked) + "where idarticulo='" + idarticulo.Text + "'";
             string Csqlrubros = "select idarticulo, idrubro from rubrosarticulos where idarticulo ='" + idarticulo.Text + "'";
             string Csqllistaartd = "delete from ARTICULOSJERARQUIAS where IDARTICULOFATHER='" + idarticulo.Text + "'";
-            string Csqlipbasico = "insert into articulos (idarticulo, idarticulobarra , nombre, idrubro, idsubrubro, UniMedi, codequiv, alto, ancho, peso, idclase) values(" + "'" + idarticulo.Text + "'" + "," + "'" + idarticulo.Text + "'" + "," + "'" + nombre.Text + "'" + "," + "'" + rubro.SelectedValue.ToString() + "'" + "," + "'" + subrubro.SelectedValue.ToString() + "'" + "," + "'" + umedida.Text + "'" + "," + "'" + codeqvuiv.Text + "'" + "," + "'" + alto.Text + "'" + "," + "'" + ancho.Text + "'" + "," + "'" + peso.Text + "'" + "," + "'" + "0001" + "'" + ")";
+            string Csqlipbasico = "insert into articulos (idarticulo, idarticulobarra , nombre, idrubro, idsubrubro, UniMedi, codequiv, alto, ancho, peso, idclase, WOO_DETALLE, publicarweb, woo_variable, woo_agrupado, InHabilitado) values(" + "'" + idarticulo.Text + "'" + "," + "'" + idarticulo.Text + "'" + "," + "'" + nombre.Text + "'" + "," + "'" + rubro.SelectedValue.ToString() + "'" + "," + "'" + subrubro.SelectedValue.ToString() + "'" + "," + "'" + umedida.Text + "'" + "," + "'" + codeqvuiv.Text + "'" + "," + "'" + alto.Text + "'" + "," + "'" + ancho.Text + "'" + "," + "'" + peso.Text + "'" + "," + "'" + "0001" + "'" + ",";
+            Csqlipbasico = Csqlipbasico + "'" + txtdetalle.Text + "'" + "," + Convert.ToInt16(CBweb.Checked) + ",";
+            Csqlipbasico = Csqlipbasico + Convert.ToInt16(CBvariable.Checked) + "," + Convert.ToInt16(CBgroup.Checked) + "," + Convert.ToInt16(InHabilitado.Checked) + ")";
             string Csqlipreciob = "insert into precios(idarticulobarra, idarticulo, idlista, precio, porcentaje, idmoneda) values (" + "'" + idarticulo.Text + "'" + "," + "'" + idarticulo.Text + "'" + "," + "'" + ConfigData.Rows[0]["SHOPPRICELIST"].ToString() + "'" + "," + "'" + precio.Text + "'" + "," + "'" + "0" + "'" + "," + "'" + ConfigData.Rows[0]["SHOPIDMONEDA"].ToString() + "'" + ")";
             string Csqlistock = "insert into stock (idarticulobarra, idarticulo, iddeposito, cantidad) values (" + "'" + idarticulo.Text + "'" + "," + "'" + idarticulo.Text + "'" + "," + "'" + ConfigData.Rows[0]["SHOPSTOCKID"].ToString() + "'" + "," + "'" + cantidad.Text + "'" + ")";
 
-            cmd = new SqlCommand(Csqlrubros, cnn);
-            SqlDataReader read = cmd.ExecuteReader();
 
+            
 
 
             /* Con esta logica, se obtiene el valor y el nombre de cada elemento del checklistbox */
@@ -337,15 +336,19 @@ namespace ProdyEcommerce
 
             try
             {
-                
+
                 //comando para hacer sentencias en sql
-                cmd = new SqlCommand(Csqllistaartd, cnn);
-                cmd.ExecuteNonQuery();
                 cmd = new SqlCommand(Csqlipbasico, cnn);
                 cmd.ExecuteNonQuery();
                 cmd = new SqlCommand(Csqlipreciob, cnn);
                 cmd.ExecuteNonQuery();
+                cmd = new SqlCommand(Csqllistaartd, cnn);
+                cmd.ExecuteNonQuery();
                 cmd = new SqlCommand(Csqlistock, cnn);
+                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand(cSqldelete, cnn);
+                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand(cSqlinserttags, cnn);
                 cmd.ExecuteNonQuery();
 
 
@@ -361,31 +364,13 @@ namespace ProdyEcommerce
                     cmd.ExecuteNonQuery();
                 }
 
-                cmd = new SqlCommand(cSqldelete, cnn);
-                cmd.ExecuteNonQuery();
-                cmd = new SqlCommand(cSqlinserttags, cnn);
-                cmd.ExecuteNonQuery();
-                cmd = new SqlCommand(Csql, cnn);
-                cmd.ExecuteNonQuery();
-
-                cnn.BeginTransaction();
-                cmd.Transaction.Commit();
+                
 
 
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Commit Exception Type: {0}", ex.GetType());
-                Console.WriteLine("  Message: {0}", ex.Message);
-                try
-                {
-                    cmd.Transaction.Rollback();
-                }
-                catch(Exception ex2)
-                {
-                    Console.WriteLine("Rollback Exception Type: {0}", ex2.GetType());
-                    Console.WriteLine("  Message: {0}", ex2.Message);
-                }
+                MessageBox.Show("No se pudo grabar el producto:" + ex.ToString());
             }
 
 
@@ -393,9 +378,96 @@ namespace ProdyEcommerce
 
         }
 
-        public void modificarproductos(TextBox idarticulo, TextBox txttags, TextBox txtdetalle, CheckBox CBweb, CheckBox CBgroup, CheckBox CBvariable, CheckedListBox listarubros, ListBox lista2, ListBox lista1, TextBox nombre, ComboBox rubro, ComboBox subrubro, TextBox umedida, TextBox codeqvuiv, TextBox alto, TextBox ancho, TextBox peso, TextBox precio, TextBox cantidad)
+        public void Modificarproductos(TextBox idarticulo, TextBox txttags, TextBox txtdetalle, CheckBox CBweb, CheckBox CBgroup, CheckBox CBvariable, CheckedListBox listarubros, ListBox lista2, ListBox lista1, TextBox nombre, ComboBox rubro, ComboBox subrubro, TextBox umedida, TextBox codeqvuiv, TextBox alto, TextBox ancho, TextBox peso, TextBox precio, TextBox cantidad, CheckBox InHabilitado)
         {
-            
+            DataTable ConfigData = new DataTable();
+            string sql = "Select * From Configuracion";
+            SqlCommand cmd = new SqlCommand(sql, cnn);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(ConfigData);
+
+            string Csqlbasico = "update articulos set nombre='" + nombre.Text + "'" + ",";
+            Csqlbasico = Csqlbasico + "idrubro='" + rubro.SelectedValue.ToString() + "'" + ",";
+            Csqlbasico = Csqlbasico + "idsubrubro='" + subrubro.SelectedValue.ToString() + "'" + ",";
+            Csqlbasico = Csqlbasico + "UniMedi='" + umedida.Text + "'" + ",";
+            Csqlbasico = Csqlbasico + "codequiv='" + codeqvuiv.Text + "'" + ",";
+            Csqlbasico = Csqlbasico + "alto='" + alto.Text + "'" + ",";
+            Csqlbasico = Csqlbasico + "ancho='" + ancho.Text + "'" + ",";
+            Csqlbasico = Csqlbasico + "peso='" + peso.Text + "'" + ",";
+            Csqlbasico = Csqlbasico + "idclase='" + "0001" + "'" + "where idarticulo='" + idarticulo.Text + "'";
+            string Csqlprecios = "update precios set idlista='" + ConfigData.Rows[0]["SHOPPRICELIST"].ToString() + "'" + ",";
+            Csqlprecios = Csqlprecios + "precio='" + precio.Text + "'" + ",";
+            Csqlprecios = Csqlprecios + "idmoneda='" + ConfigData.Rows[0]["SHOPIDMONEDA"].ToString() + "'" + "where idarticulo = '" + idarticulo.Text + "'";
+            string Csqlstock = "update stock set iddeposito='" + ConfigData.Rows[0]["SHOPSTOCKID"].ToString() + "'" + ",";
+            Csqlstock = Csqlstock + "cantidad='" + cantidad.Text + "'" + "where idarticulo ='" + idarticulo.Text + "'";
+            string Csqlcheckbox = "update articulos set WOO_DETALLE='" + txtdetalle.Text + "'" + ",";
+            Csqlcheckbox = Csqlcheckbox + "publicarweb=" + Convert.ToInt16(CBweb.Checked) + ",";
+            Csqlcheckbox = Csqlcheckbox + "woo_variable=" + Convert.ToInt16(CBvariable.Checked) + ",";
+            Csqlcheckbox = Csqlcheckbox + "woo_agrupado=" + Convert.ToInt16(CBgroup.Checked) + "," + "InHabilitado=" + Convert.ToInt16(InHabilitado.Checked) + "where idarticulo='" + idarticulo.Text + "'";
+            string cSqldeletetags = "delete from ecomm_tags  where idarticulo ='" + idarticulo.Text + "'";
+            string cSqlinserttags = "insert into ecomm_tags (idarticulo, tags) values(" + "'" + idarticulo.Text + "'" + "," + "'" + txttags.Text + "'" + ")";
+
+
+
+
+            for (int i = 0; i < listarubros.Items.Count; i++)
+            {
+
+                DataRowView r = (DataRowView)listarubros.Items[i];
+                string val = (r[listarubros.ValueMember]).ToString();
+                string dis = (r[listarubros.DisplayMember]).ToString();
+                r = null;
+                string Csqldrubros = "delete from rubrosarticulos where idarticulo='" + idarticulo.Text + "'" + "and idrubro='" + val + "'";
+                if (listarubros.GetItemCheckState(i) == CheckState.Checked)
+                {
+                    cmd = new SqlCommand(Csqldrubros, cnn);
+                    cmd.ExecuteNonQuery();
+                    string Csqlirubros = "insert into rubrosarticulos (idarticulo, idrubro) values(" + "'" + idarticulo.Text + "'" + "," + "'" + val + "'" + ")";
+                    cmd = new SqlCommand(Csqlirubros, cnn);
+                    cmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    cmd = new SqlCommand(Csqldrubros, cnn);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+
+            try
+            {
+                cmd = new SqlCommand(Csqlbasico, cnn);
+                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand(Csqlprecios, cnn);
+                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand(Csqlstock, cnn);
+                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand(Csqlcheckbox, cnn);
+                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand(cSqldeletetags, cnn);
+                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand(cSqlinserttags, cnn);
+                cmd.ExecuteNonQuery();
+
+
+                for (int i = 0; i < lista2.Items.Count; i++)
+                {
+                    string Cadena = lista2.Items[i].ToString();
+                    int nLargo = Cadena.Length;
+                    int cValor = Cadena.IndexOf('?') + 1;
+                    string id = Cadena.Substring(cValor, nLargo - cValor);
+
+                    string Csqllistaarti = "insert into ARTICULOSJERARQUIAS (idarticulo, idarticulofather) values(" + "'" + id + "'" + "," + "'" + idarticulo.Text + "'" + ")";
+                    cmd = new SqlCommand(Csqllistaarti, cnn);
+                    cmd.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Modificado correctamente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo modificar el producto:" + ex.ToString());
+            }
         }
 
         public void Llenarconfiguracion(ComboBox cblista, ComboBox cbvendedor, ComboBox cbstock, ComboBox cbmoneda, CheckBox Chbox, TextBox imagen)
