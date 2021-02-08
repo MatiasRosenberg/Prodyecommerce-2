@@ -17,7 +17,6 @@ namespace ProdyEcommerce
         SqlCommand cmd;
         DataTable dt;
         SqlDataAdapter da;
-        
 
         public static class AutoCompleClass
         {
@@ -406,6 +405,7 @@ namespace ProdyEcommerce
             Csqlcheckbox = Csqlcheckbox + "woo_agrupado=" + Convert.ToInt16(CBgroup.Checked) + "," + "InHabilitado=" + Convert.ToInt16(InHabilitado.Checked) + "where idarticulo='" + idarticulo.Text + "'";
             string cSqldeletetags = "delete from ecomm_tags  where idarticulo ='" + idarticulo.Text + "'";
             string cSqlinserttags = "insert into ecomm_tags (idarticulo, tags) values(" + "'" + idarticulo.Text + "'" + "," + "'" + txttags.Text + "'" + ")";
+            string Csqllistaartd = "delete from ARTICULOSJERARQUIAS where IDARTICULOFATHER='" + idarticulo.Text + "'";
 
 
 
@@ -447,6 +447,8 @@ namespace ProdyEcommerce
                 cmd = new SqlCommand(cSqldeletetags, cnn);
                 cmd.ExecuteNonQuery();
                 cmd = new SqlCommand(cSqlinserttags, cnn);
+                cmd.ExecuteNonQuery();
+                cmd = new SqlCommand(Csqllistaartd, cnn);
                 cmd.ExecuteNonQuery();
 
 
@@ -828,7 +830,28 @@ namespace ProdyEcommerce
             subrubo.ValueMember = "idsubRubro";
         }
 
-        
+        public void Codigoregistrado(TextBox Textbox1)
+        {
+            string query = "Select COUNT(*) from articulos WHERE idarticulo = @param";
+            SqlCommand cmd = new SqlCommand(query, cnn);
+            cmd.Parameters.AddWithValue("@param", Textbox1.Text);
+
+            int cant = Convert.ToInt32(cmd.ExecuteScalar());
+
+            if (cant == 0)
+            {
+                    
+            }
+            else
+            {
+                MessageBox.Show("El articulo ya existe");
+                Textbox1.Text = "";
+                Textbox1.Focus();
+                return;
+            }
+        }
+
+
     }
 }
 

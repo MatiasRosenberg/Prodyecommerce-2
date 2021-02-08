@@ -30,6 +30,8 @@ namespace ProdyEcommerce
             Funciones F = new Funciones();
             F.Llenardatagrid(dtgridcodigo);
 
+            button1.Enabled = false;
+            button2.Enabled = false;
             txtcodigo.Enabled = false;
             txtnombrecod.Enabled = false;
             cmbrubro.Enabled = false;
@@ -73,36 +75,33 @@ namespace ProdyEcommerce
             if(btnnuevoFuePresionado == true)
             {
                 F.Grabararticulos(txtcodigo, txttags, txtdetalles, CBPulicar, Cbpagrupado, Cbpvariable, chkrubros, listBox2, listBox1, txtnombrecod, cmbrubro, cmbsubrubro, txtumedida, txtcodigoequiv, txtalto, txtancho, txtpeso, txtprecio, txtstock, chkinhabilitar);
-
             }
             else if (btnmodificarfuepresionado == true)
             {
                 F.Modificarproductos(txtcodigo, txttags, txtdetalles, CBPulicar, Cbpagrupado, Cbpvariable, chkrubros, listBox2, listBox1, txtnombrecod, cmbrubro, cmbsubrubro, txtumedida, txtcodigoequiv, txtalto, txtancho, txtpeso, txtprecio, txtstock, chkinhabilitar);
             }
             btnlimpiar_Click(null, null);
-            Form1_Load(null, null);
+            Form1_Load(sender, e);
             F.Llenardatagrid(dtgridcodigo);
         }
 
         private void txtarticulo_TextChanged_1(object sender, EventArgs e)
         {
-           
-           F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, txtstock, chkinhabilitar);
-            
+            F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, txtstock, chkinhabilitar);
         }
 
 
         private void txtarticulo_Leave(object sender, EventArgs e)
         {
-           
-            F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, txtstock, chkinhabilitar);
-            
+            F.Llenarproductos(txtnombre, txtdetalles, txttags, chkrubros, txtarticulo, txtumedida, txtcodigoequiv, txtpeso, txtalto, txtancho, CBPulicar, Cbpvariable, Cbpagrupado, listBox1, listBox2, txtprecio, cmbrubro, cmbsubrubro, txtstock, chkinhabilitar);   
         }
 
         private void btnlimpiar_Click(object sender, EventArgs e)
         {
             btnnuevoFuePresionado = false;
             btnmodificarfuepresionado = false;
+            button1.Enabled = true;
+            button2.Enabled = true;
             txtcodigo.Text = "";
             txtnombrecod.Text = "";
             txtumedida.Text = "";
@@ -196,11 +195,6 @@ namespace ProdyEcommerce
             }
         }
 
-        private void txtarticulo_Validated(object sender, EventArgs e)
-        {
-           
-        }
-
         private void btnbuscar_Click(object sender, EventArgs e)
         {
                 busqueda.ShowDialog();
@@ -266,6 +260,13 @@ namespace ProdyEcommerce
             }
             else
             {
+                chkrubros.DataSource = null;
+                chkrubros.Items.Clear();
+                listBox1.DataSource = null;
+                listBox1.Items.Clear();
+                listBox2.DataSource = null;
+                listBox2.Items.Clear();
+                txtarticulo.Text = "";
                 txtarticulo.Text = dtgridcodigo.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
                 txtnombre.Text = dtgridcodigo.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
                 txtcodigo.Text = dtgridcodigo.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
@@ -275,12 +276,18 @@ namespace ProdyEcommerce
 
         private void dtgridcodigo_SelectionChanged(object sender, EventArgs e)
         {
+            chkrubros.DataSource = null;
+            chkrubros.Items.Clear();
+            listBox1.DataSource = null;
+            listBox1.Items.Clear();
+            listBox2.DataSource = null;
+            listBox2.Items.Clear();
+            txtarticulo.Text = "";
             var row = dtgridcodigo.CurrentRow;
             txtcodigo.Text = row.Cells["Codigo"].Value.ToString();
             txtnombrecod.Text = row.Cells["Nombre"].Value.ToString();
             txtarticulo.Text = row.Cells["Codigo"].Value.ToString();
             txtnombre.Text = row.Cells["Nombre"].Value.ToString();
-
         }
 
         private void txtprecio_Validated(object sender, EventArgs e)
@@ -290,18 +297,29 @@ namespace ProdyEcommerce
 
         private void txtcodigo_Leave(object sender, EventArgs e)
         {
-            string Csql = "select artnumerico,LongCodArt from configuracion";
-            cmd = new SqlCommand(Csql, cnn);
-            SqlDataReader read = cmd.ExecuteReader();
-            if (read.Read() == true)
+            if (string.IsNullOrEmpty(txtcodigo.Text))
             {
-                if (read["artnumerico"].ToString() == "1")
-                {
-                    F.Completarcon0(txtcodigo, txtcodigo);
-                }
+                MessageBox.Show("Completar codigo de articulo");
+                txtcodigo.Focus();
+                return;
             }
-            txtarticulo.Text = txtcodigo.Text;
-            F.rubroysub(cmbrubro, cmbsubrubro);
+            else
+            {
+                string Csql = "select artnumerico,LongCodArt from configuracion";
+                cmd = new SqlCommand(Csql, cnn);
+                SqlDataReader read = cmd.ExecuteReader();
+                if (read.Read() == true)
+                {
+                    if (read["artnumerico"].ToString() == "1")
+                    {
+                        F.Completarcon0(txtcodigo, txtcodigo);
+                    }
+                }
+                F.Codigoregistrado(txtcodigo);
+                txtarticulo.Text = txtcodigo.Text;
+                F.rubroysub(cmbrubro, cmbsubrubro);
+            }
+            
         }
 
         private void txtnombrecod_Leave(object sender, EventArgs e)
@@ -403,6 +421,10 @@ namespace ProdyEcommerce
             txtnombrecod.Focus();
 
             F.rubroysub(cmbrubro, cmbsubrubro);
+        }
+
+        private void txtcodigo_Validated(object sender, EventArgs e)
+        {                
         }
     }
 }

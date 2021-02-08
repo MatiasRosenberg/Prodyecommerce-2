@@ -413,7 +413,7 @@
             this.txtcodigo.Size = new System.Drawing.Size(129, 20);
             this.txtcodigo.TabIndex = 2;
             this.txtcodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcodigo_KeyPress);
-            this.txtcodigo.Leave += new System.EventHandler(this.txtcodigo_Leave);
+            this.txtcodigo.Validated += new System.EventHandler(this.txtcodigo_Validated);
             // 
             // tabPage2
             // 
@@ -634,7 +634,6 @@
             this.txtarticulo.TabIndex = 24;
             this.txtarticulo.TextChanged += new System.EventHandler(this.txtarticulo_TextChanged_1);
             this.txtarticulo.Leave += new System.EventHandler(this.txtarticulo_Leave);
-            this.txtarticulo.Validated += new System.EventHandler(this.txtarticulo_Validated);
             // 
             // lblarticulo
             // 
