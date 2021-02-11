@@ -79,6 +79,8 @@ namespace ProdyEcommerce
             else if (btnmodificarfuepresionado == true)
             {
                 F.Modificarproductos(txtcodigo, txttags, txtdetalles, CBPulicar, Cbpagrupado, Cbpvariable, chkrubros, listBox2, listBox1, txtnombrecod, cmbrubro, cmbsubrubro, txtumedida, txtcodigoequiv, txtalto, txtancho, txtpeso, txtprecio, txtstock, chkinhabilitar);
+                btnnuevo.Enabled = true;
+                btnlimpiar.Enabled = true;
             }
             btnlimpiar_Click(null, null);
             Form1_Load(sender, e);
@@ -223,6 +225,7 @@ namespace ProdyEcommerce
         private void btnnuevo_Click(object sender, EventArgs e)
         {
             btnlimpiar_Click(null, null);
+            btnmodificar.Enabled = false;
             btnnuevoFuePresionado = true;
             dtgridcodigo.Enabled = false;
             txtbuscod.Enabled = false;
@@ -290,38 +293,6 @@ namespace ProdyEcommerce
             txtnombre.Text = row.Cells["Nombre"].Value.ToString();
         }
 
-        private void txtprecio_Validated(object sender, EventArgs e)
-        {
-            F.FormatoMoneda(txtprecio);
-        }
-
-        private void txtcodigo_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtcodigo.Text))
-            {
-                MessageBox.Show("Completar codigo de articulo");
-                txtcodigo.Focus();
-                return;
-            }
-            else
-            {
-                string Csql = "select artnumerico,LongCodArt from configuracion";
-                cmd = new SqlCommand(Csql, cnn);
-                SqlDataReader read = cmd.ExecuteReader();
-                if (read.Read() == true)
-                {
-                    if (read["artnumerico"].ToString() == "1")
-                    {
-                        F.Completarcon0(txtcodigo, txtcodigo);
-                    }
-                }
-                F.Codigoregistrado(txtcodigo);
-                txtarticulo.Text = txtcodigo.Text;
-                F.rubroysub(cmbrubro, cmbsubrubro);
-            }
-            
-        }
-
         private void txtnombrecod_Leave(object sender, EventArgs e)
         {
             txtnombre.Text = txtnombrecod.Text;
@@ -372,24 +343,10 @@ namespace ProdyEcommerce
             
         }
 
-        private void txtpeso_Validated(object sender, EventArgs e)
-        {
-            F.FormatoMoneda(txtprecio);
-        }
-
-        private void txtalto_Validated(object sender, EventArgs e)
-        {
-            F.FormatoMoneda(txtprecio);
-        }
-
-        private void txtancho_Validated(object sender, EventArgs e)
-        {
-            F.FormatoMoneda(txtprecio);
-        }
-
         private void btnmodificar_Click(object sender, EventArgs e)
         {
             btnmodificarfuepresionado = true;
+            btnnuevo.Enabled = false;
             dtgridcodigo.Enabled = false;
             txtbuscod.Enabled = false;
             txtbusnom.Enabled = false;
@@ -423,8 +380,55 @@ namespace ProdyEcommerce
             F.rubroysub(cmbrubro, cmbsubrubro);
         }
 
-        private void txtcodigo_Validated(object sender, EventArgs e)
-        {                
+        private void txtcodigo_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtcodigo.Text))
+            {
+                MessageBox.Show("Completar codigo de articulo");
+                txtcodigo.Focus();
+                return;
+            }
+            else
+            {
+                string Csql = "select artnumerico,LongCodArt from configuracion";
+                cmd = new SqlCommand(Csql, cnn);
+                SqlDataReader read = cmd.ExecuteReader();
+                if (read.Read() == true)
+                {
+                    if (read["artnumerico"].ToString() == "1")
+                    {
+                        F.Completarcon0(txtcodigo, txtcodigo);
+                    }
+                }
+                F.Codigoregistrado(txtcodigo);
+                txtarticulo.Text = txtcodigo.Text;
+                F.rubroysub(cmbrubro, cmbsubrubro);
+            }
+        }
+
+        private void txtstock_TextChanged(object sender, EventArgs e)
+        {
+            F.FormatoMoneda(txtstock);
+        }
+
+        private void txtancho_TextChanged(object sender, EventArgs e)
+        {
+            F.FormatoMoneda(txtancho);
+        }
+
+        private void txtalto_TextChanged(object sender, EventArgs e)
+        {
+            F.FormatoMoneda(txtalto);
+        }
+
+        private void txtpeso_TextChanged(object sender, EventArgs e)
+        {
+            F.FormatoMoneda(txtpeso);
+        }
+
+        private void txtprecio_TextChanged(object sender, EventArgs e)
+        {
+            F.FormatoMoneda(txtprecio);
         }
     }
 }
