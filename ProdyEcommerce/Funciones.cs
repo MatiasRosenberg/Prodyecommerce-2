@@ -394,8 +394,7 @@ namespace ProdyEcommerce
             Csqlbasico = Csqlbasico + "ancho='" + ancho.Text + "'" + ",";
             Csqlbasico = Csqlbasico + "peso='" + peso.Text + "'" + ",";
             Csqlbasico = Csqlbasico + "idclase='" + "0001" + "'" + "where idarticulo='" + idarticulo.Text + "'";
-            string Csqlprecios = "update precios set idlista='" + ConfigData.Rows[0]["SHOPPRICELIST"].ToString() + "'" + ",";
-            Csqlprecios = Csqlprecios + "precio='" + precio.Text + "'" + ",";
+            string Csqlprecios = "update precios set precio ='" + precio.Text + "'" + ",";
             Csqlprecios = Csqlprecios + "idmoneda='" + ConfigData.Rows[0]["SHOPIDMONEDA"].ToString() + "'" + "where idarticulo = '" + idarticulo.Text + "'";
             string Csqlstock = "update stock set iddeposito='" + ConfigData.Rows[0]["SHOPSTOCKID"].ToString() + "'" + ",";
             Csqlstock = Csqlstock + "cantidad='" + cantidad.Text + "'" + "where idarticulo ='" + idarticulo.Text + "'";

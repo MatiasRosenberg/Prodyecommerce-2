@@ -236,8 +236,6 @@ namespace ProdyEcommerce
             cmbsubrubro.Enabled = true;
             txtumedida.Enabled = true;
             txtcodigoequiv.Enabled = true;
-            txtprecio.Enabled = true;
-            txtstock.Enabled = true;
             txtpeso.Enabled = true;
             txtalto.Enabled = true;
             txtancho.Enabled = true;
@@ -250,6 +248,9 @@ namespace ProdyEcommerce
             btngrabar.Enabled = true;
             btnlimpiar.Enabled = true;
             btnbuscar.Enabled = false;
+            txtprecio.Enabled = true;
+            txtstock.Enabled = true;
+            btnlimpiar.Enabled = false;
             txtcodigo.Focus();
 
             F.rubroysub(cmbrubro, cmbsubrubro);
@@ -279,18 +280,18 @@ namespace ProdyEcommerce
 
         private void dtgridcodigo_SelectionChanged(object sender, EventArgs e)
         {
-            chkrubros.DataSource = null;
-            chkrubros.Items.Clear();
-            listBox1.DataSource = null;
-            listBox1.Items.Clear();
-            listBox2.DataSource = null;
-            listBox2.Items.Clear();
-            txtarticulo.Text = "";
-            var row = dtgridcodigo.CurrentRow;
-            txtcodigo.Text = row.Cells["Codigo"].Value.ToString();
-            txtnombrecod.Text = row.Cells["Nombre"].Value.ToString();
-            txtarticulo.Text = row.Cells["Codigo"].Value.ToString();
-            txtnombre.Text = row.Cells["Nombre"].Value.ToString();
+            DataGridView dgv = sender as DataGridView;
+            if (dgv != null && dgv.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgv.SelectedRows[0];
+                if (row != null)
+                {
+                    txtcodigo.Text = row.Cells[0].Value.ToString();
+                    txtnombrecod.Text = row.Cells[1].Value.ToString();
+                    txtarticulo.Text = row.Cells[0].Value.ToString();
+                    txtnombre.Text = row.Cells[1].Value.ToString();
+                }
+            }
         }
 
         private void txtnombrecod_Leave(object sender, EventArgs e)
@@ -355,8 +356,6 @@ namespace ProdyEcommerce
             cmbsubrubro.Enabled = true;
             txtumedida.Enabled = true;
             txtcodigoequiv.Enabled = true;
-            txtprecio.Enabled = true;
-            txtstock.Enabled = true;
             txtpeso.Enabled = true;
             txtalto.Enabled = true;
             txtancho.Enabled = true;
@@ -375,6 +374,7 @@ namespace ProdyEcommerce
             Cbpvariable.Enabled = true;
             chkrubros.Enabled = true;
             chkinhabilitar.Enabled = true;
+            btnlimpiar.Enabled = false;
             txtnombrecod.Focus();
 
             F.rubroysub(cmbrubro, cmbsubrubro);

@@ -53,5 +53,10 @@ namespace ProdyEcommerce
 
             this.Text = "Prodyecommerce Version:" + Application.ProductVersion;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            F.sync(lblsync0, lblsync1);
+        }
     }
 }

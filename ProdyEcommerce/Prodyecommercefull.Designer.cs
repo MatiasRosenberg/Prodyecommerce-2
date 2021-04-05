@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Prodyecommercefull));
             this.Btnproductos = new System.Windows.Forms.Button();
             this.btnconfiguracion = new System.Windows.Forms.Button();
             this.Btnsalir = new System.Windows.Forms.Button();
@@ -36,6 +37,7 @@
             this.lblsinc = new System.Windows.Forms.Label();
             this.lblsync1 = new System.Windows.Forms.Label();
             this.lblsync0 = new System.Windows.Forms.Label();
+            this.Btnactualizar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Btnproductos
@@ -140,6 +142,20 @@
             this.lblsync0.Size = new System.Drawing.Size(0, 14);
             this.lblsync0.TabIndex = 21;
             // 
+            // Btnactualizar
+            // 
+            this.Btnactualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.Btnactualizar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.Btnactualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btnactualizar.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btnactualizar.Location = new System.Drawing.Point(691, 269);
+            this.Btnactualizar.Name = "Btnactualizar";
+            this.Btnactualizar.Size = new System.Drawing.Size(145, 31);
+            this.Btnactualizar.TabIndex = 22;
+            this.Btnactualizar.Text = "&Actualizar";
+            this.Btnactualizar.UseVisualStyleBackColor = false;
+            this.Btnactualizar.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Prodyecommercefull
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -148,6 +164,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(886, 384);
             this.ControlBox = false;
+            this.Controls.Add(this.Btnactualizar);
             this.Controls.Add(this.lblsync0);
             this.Controls.Add(this.lblsync1);
             this.Controls.Add(this.lblasinc);
@@ -156,6 +173,7 @@
             this.Controls.Add(this.Btnsalir);
             this.Controls.Add(this.btnconfiguracion);
             this.Controls.Add(this.Btnproductos);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Prodyecommercefull";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Prodyecommercefull";
@@ -175,5 +193,6 @@
         private System.Windows.Forms.Label lblsinc;
         private System.Windows.Forms.Label lblsync1;
         private System.Windows.Forms.Label lblsync0;
+        private System.Windows.Forms.Button Btnactualizar;
     }
 }
