@@ -29,6 +29,7 @@ namespace ProdyEcommerce
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Busqueda_rubros));
             this.btnbuscar = new System.Windows.Forms.Button();
             this.dgvrubros = new System.Windows.Forms.DataGridView();
             this.comboboxfiltro = new System.Windows.Forms.ComboBox();
@@ -101,6 +102,7 @@ namespace ProdyEcommerce
             this.Controls.Add(this.comboboxfiltro);
             this.Controls.Add(this.lblbusqueda);
             this.Controls.Add(this.txtbusqueda);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Busqueda_rubros";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Busqueda_rubros";

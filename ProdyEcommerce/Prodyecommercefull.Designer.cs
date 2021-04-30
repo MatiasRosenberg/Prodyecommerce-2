@@ -38,6 +38,7 @@
             this.lblsync1 = new System.Windows.Forms.Label();
             this.lblsync0 = new System.Windows.Forms.Label();
             this.Btnactualizar = new System.Windows.Forms.Button();
+            this.Btnrubrosysubrubros = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Btnproductos
@@ -48,9 +49,9 @@
             this.Btnproductos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.Btnproductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btnproductos.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btnproductos.Location = new System.Drawing.Point(12, 136);
+            this.Btnproductos.Location = new System.Drawing.Point(12, 127);
             this.Btnproductos.Name = "Btnproductos";
-            this.Btnproductos.Size = new System.Drawing.Size(183, 100);
+            this.Btnproductos.Size = new System.Drawing.Size(164, 100);
             this.Btnproductos.TabIndex = 0;
             this.Btnproductos.Text = "&Productos";
             this.Btnproductos.UseVisualStyleBackColor = false;
@@ -64,9 +65,9 @@
             this.btnconfiguracion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnconfiguracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnconfiguracion.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnconfiguracion.Location = new System.Drawing.Point(464, 136);
+            this.btnconfiguracion.Location = new System.Drawing.Point(549, 127);
             this.btnconfiguracion.Name = "btnconfiguracion";
-            this.btnconfiguracion.Size = new System.Drawing.Size(183, 100);
+            this.btnconfiguracion.Size = new System.Drawing.Size(164, 100);
             this.btnconfiguracion.TabIndex = 1;
             this.btnconfiguracion.Text = "&Configuracion";
             this.btnconfiguracion.UseVisualStyleBackColor = false;
@@ -80,9 +81,9 @@
             this.Btnsalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.Btnsalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btnsalir.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btnsalir.Location = new System.Drawing.Point(691, 136);
+            this.Btnsalir.Location = new System.Drawing.Point(728, 127);
             this.Btnsalir.Name = "Btnsalir";
-            this.Btnsalir.Size = new System.Drawing.Size(183, 100);
+            this.Btnsalir.Size = new System.Drawing.Size(164, 100);
             this.Btnsalir.TabIndex = 2;
             this.Btnsalir.Text = "&Salir";
             this.Btnsalir.UseVisualStyleBackColor = false;
@@ -96,9 +97,9 @@
             this.btnjerarquia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnjerarquia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnjerarquia.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnjerarquia.Location = new System.Drawing.Point(238, 136);
+            this.btnjerarquia.Location = new System.Drawing.Point(370, 127);
             this.btnjerarquia.Name = "btnjerarquia";
-            this.btnjerarquia.Size = new System.Drawing.Size(183, 100);
+            this.btnjerarquia.Size = new System.Drawing.Size(164, 100);
             this.btnjerarquia.TabIndex = 3;
             this.btnjerarquia.Text = "&Jerarquia de rubros";
             this.btnjerarquia.UseVisualStyleBackColor = false;
@@ -108,7 +109,7 @@
             // 
             this.lblasinc.AutoSize = true;
             this.lblasinc.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblasinc.Location = new System.Drawing.Point(688, 361);
+            this.lblasinc.Location = new System.Drawing.Point(726, 361);
             this.lblasinc.Name = "lblasinc";
             this.lblasinc.Size = new System.Drawing.Size(141, 14);
             this.lblasinc.TabIndex = 19;
@@ -118,7 +119,7 @@
             // 
             this.lblsinc.AutoSize = true;
             this.lblsinc.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblsinc.Location = new System.Drawing.Point(688, 322);
+            this.lblsinc.Location = new System.Drawing.Point(726, 322);
             this.lblsinc.Name = "lblsinc";
             this.lblsinc.Size = new System.Drawing.Size(148, 14);
             this.lblsinc.TabIndex = 18;
@@ -128,7 +129,7 @@
             // 
             this.lblsync1.AutoSize = true;
             this.lblsync1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblsync1.Location = new System.Drawing.Point(843, 322);
+            this.lblsync1.Location = new System.Drawing.Point(874, 322);
             this.lblsync1.Name = "lblsync1";
             this.lblsync1.Size = new System.Drawing.Size(0, 14);
             this.lblsync1.TabIndex = 20;
@@ -137,7 +138,7 @@
             // 
             this.lblsync0.AutoSize = true;
             this.lblsync0.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblsync0.Location = new System.Drawing.Point(843, 361);
+            this.lblsync0.Location = new System.Drawing.Point(874, 361);
             this.lblsync0.Name = "lblsync0";
             this.lblsync0.Size = new System.Drawing.Size(0, 14);
             this.lblsync0.TabIndex = 21;
@@ -148,7 +149,7 @@
             this.Btnactualizar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.Btnactualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btnactualizar.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btnactualizar.Location = new System.Drawing.Point(691, 269);
+            this.Btnactualizar.Location = new System.Drawing.Point(729, 260);
             this.Btnactualizar.Name = "Btnactualizar";
             this.Btnactualizar.Size = new System.Drawing.Size(145, 31);
             this.Btnactualizar.TabIndex = 22;
@@ -156,14 +157,31 @@
             this.Btnactualizar.UseVisualStyleBackColor = false;
             this.Btnactualizar.Click += new System.EventHandler(this.button1_Click);
             // 
+            // Btnrubrosysubrubros
+            // 
+            this.Btnrubrosysubrubros.BackColor = System.Drawing.Color.DodgerBlue;
+            this.Btnrubrosysubrubros.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.Btnrubrosysubrubros.FlatAppearance.BorderSize = 2;
+            this.Btnrubrosysubrubros.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.Btnrubrosysubrubros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btnrubrosysubrubros.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btnrubrosysubrubros.Location = new System.Drawing.Point(191, 127);
+            this.Btnrubrosysubrubros.Name = "Btnrubrosysubrubros";
+            this.Btnrubrosysubrubros.Size = new System.Drawing.Size(164, 100);
+            this.Btnrubrosysubrubros.TabIndex = 23;
+            this.Btnrubrosysubrubros.Text = "&Rubros";
+            this.Btnrubrosysubrubros.UseVisualStyleBackColor = false;
+            this.Btnrubrosysubrubros.Click += new System.EventHandler(this.Btnrubrosysubrubros_Click);
+            // 
             // Prodyecommercefull
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(886, 384);
+            this.ClientSize = new System.Drawing.Size(914, 384);
             this.ControlBox = false;
+            this.Controls.Add(this.Btnrubrosysubrubros);
             this.Controls.Add(this.Btnactualizar);
             this.Controls.Add(this.lblsync0);
             this.Controls.Add(this.lblsync1);
@@ -194,5 +212,6 @@
         private System.Windows.Forms.Label lblsync1;
         private System.Windows.Forms.Label lblsync0;
         private System.Windows.Forms.Button Btnactualizar;
+        private System.Windows.Forms.Button Btnrubrosysubrubros;
     }
 }

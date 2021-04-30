@@ -31,6 +31,7 @@ namespace ProdyEcommerce
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Busqueda_avanzada));
             this.txtbusqueda = new System.Windows.Forms.TextBox();
             this.lblbusqueda = new System.Windows.Forms.Label();
             this.lblfiltro = new System.Windows.Forms.Label();
@@ -113,6 +114,7 @@ namespace ProdyEcommerce
             this.Controls.Add(this.lblfiltro);
             this.Controls.Add(this.lblbusqueda);
             this.Controls.Add(this.txtbusqueda);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Busqueda_avanzada";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Busqueda_avanzada";

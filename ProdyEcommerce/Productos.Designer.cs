@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Productos));
             this.btngrabar = new System.Windows.Forms.Button();
             this.btnsalir = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -703,6 +704,7 @@
             this.Controls.Add(this.btngrabar);
             this.Controls.Add(this.btnbuscar);
             this.Controls.Add(this.btnlimpiar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Productos";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;

@@ -58,5 +58,12 @@ namespace ProdyEcommerce
         {
             F.sync(lblsync0, lblsync1);
         }
+
+        private void Btnrubrosysubrubros_Click(object sender, EventArgs e)
+        {
+            ProdyEcommercefull.Rurbos R = new ProdyEcommercefull.Rurbos();
+
+            R.ShowDialog();
+        }
     }
 }

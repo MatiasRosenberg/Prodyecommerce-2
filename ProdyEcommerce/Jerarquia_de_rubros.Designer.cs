@@ -29,6 +29,7 @@ namespace ProdyEcommerce
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Jerarquia_de_rubros));
             this.lblrubro = new System.Windows.Forms.Label();
             this.txtidrubro = new System.Windows.Forms.TextBox();
             this.txtnombrerubro = new System.Windows.Forms.TextBox();
@@ -143,6 +144,7 @@ namespace ProdyEcommerce
             this.Controls.Add(this.txtnombrerubro);
             this.Controls.Add(this.txtidrubro);
             this.Controls.Add(this.lblrubro);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Jerarquia_de_rubros";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

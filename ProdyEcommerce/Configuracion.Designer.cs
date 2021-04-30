@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Configuracion));
             this.lbllista = new System.Windows.Forms.Label();
             this.lblvendedor = new System.Windows.Forms.Label();
             this.lblstock = new System.Windows.Forms.Label();
@@ -196,6 +197,7 @@
             this.Controls.Add(this.lblstock);
             this.Controls.Add(this.lblvendedor);
             this.Controls.Add(this.lbllista);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Configuracion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

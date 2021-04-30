@@ -23,10 +23,11 @@ namespace ProdyEcommerce
             InitializeComponent();
         }
 
+        
+
 
         private void Form1_Load(object sender, EventArgs e)
-        {       
-
+        {
             Funciones F = new Funciones();
             F.Llenardatagrid(dtgridcodigo);
 

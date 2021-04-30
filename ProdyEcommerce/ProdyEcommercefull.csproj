@@ -140,6 +140,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rubros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rubros.Designer.cs">
+      <DependentUpon>Rubros.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Busqueda_avanzada.resx">
       <DependentUpon>Busqueda_avanzada.cs</DependentUpon>
     </EmbeddedResource>
@@ -171,6 +177,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Rubros.resx">
+      <DependentUpon>Rubros.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="ProdyEcommerce_TemporaryKey.pfx" />
     <None Include="Properties\app.manifest" />
@@ -201,6 +210,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Iconoprodyecommerce.ico" />
+    <None Include="Resources\Iconoprodyecommerce.ico" />
+    <None Include="Resources\Icon1.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

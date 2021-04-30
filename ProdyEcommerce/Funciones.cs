@@ -282,6 +282,24 @@ namespace ProdyEcommerce
             }
         }
 
+        public void Llenarrubros(DataGridView dgv)
+        {
+            try
+            {
+                string rubros = "select idrubro as Idrubro, nombre from rubros";
+
+                da = new SqlDataAdapter(rubros, cnn);
+                dt = new DataTable();
+                da.Fill(dt);
+                dgv.DataSource = dt;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo llenar la tabla" + ex.ToString());
+            }
+        }
+
         public void Grabararticulos(TextBox idarticulo, TextBox txttags, TextBox txtdetalle, CheckBox CBweb, CheckBox CBgroup, CheckBox CBvariable, CheckedListBox listarubros, ListBox lista2, ListBox lista1, TextBox nombre, ComboBox rubro, ComboBox subrubro, TextBox umedida, TextBox codeqvuiv, TextBox alto, TextBox ancho, TextBox peso, TextBox precio, TextBox cantidad, CheckBox InHabilitado)
         {
 
