@@ -39,6 +39,7 @@
             this.lblsync0 = new System.Windows.Forms.Label();
             this.Btnactualizar = new System.Windows.Forms.Button();
             this.Btnrubrosysubrubros = new System.Windows.Forms.Button();
+            this.Btnsubrubros = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Btnproductos
@@ -49,9 +50,9 @@
             this.Btnproductos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.Btnproductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btnproductos.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btnproductos.Location = new System.Drawing.Point(12, 127);
+            this.Btnproductos.Location = new System.Drawing.Point(12, 149);
             this.Btnproductos.Name = "Btnproductos";
-            this.Btnproductos.Size = new System.Drawing.Size(164, 100);
+            this.Btnproductos.Size = new System.Drawing.Size(133, 78);
             this.Btnproductos.TabIndex = 0;
             this.Btnproductos.Text = "&Productos";
             this.Btnproductos.UseVisualStyleBackColor = false;
@@ -65,9 +66,9 @@
             this.btnconfiguracion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnconfiguracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnconfiguracion.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnconfiguracion.Location = new System.Drawing.Point(549, 127);
+            this.btnconfiguracion.Location = new System.Drawing.Point(592, 149);
             this.btnconfiguracion.Name = "btnconfiguracion";
-            this.btnconfiguracion.Size = new System.Drawing.Size(164, 100);
+            this.btnconfiguracion.Size = new System.Drawing.Size(133, 78);
             this.btnconfiguracion.TabIndex = 1;
             this.btnconfiguracion.Text = "&Configuracion";
             this.btnconfiguracion.UseVisualStyleBackColor = false;
@@ -81,9 +82,9 @@
             this.Btnsalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.Btnsalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btnsalir.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btnsalir.Location = new System.Drawing.Point(728, 127);
+            this.Btnsalir.Location = new System.Drawing.Point(741, 149);
             this.Btnsalir.Name = "Btnsalir";
-            this.Btnsalir.Size = new System.Drawing.Size(164, 100);
+            this.Btnsalir.Size = new System.Drawing.Size(133, 78);
             this.Btnsalir.TabIndex = 2;
             this.Btnsalir.Text = "&Salir";
             this.Btnsalir.UseVisualStyleBackColor = false;
@@ -97,9 +98,9 @@
             this.btnjerarquia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnjerarquia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnjerarquia.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnjerarquia.Location = new System.Drawing.Point(370, 127);
+            this.btnjerarquia.Location = new System.Drawing.Point(447, 149);
             this.btnjerarquia.Name = "btnjerarquia";
-            this.btnjerarquia.Size = new System.Drawing.Size(164, 100);
+            this.btnjerarquia.Size = new System.Drawing.Size(133, 78);
             this.btnjerarquia.TabIndex = 3;
             this.btnjerarquia.Text = "&Jerarquia de rubros";
             this.btnjerarquia.UseVisualStyleBackColor = false;
@@ -165,13 +166,29 @@
             this.Btnrubrosysubrubros.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.Btnrubrosysubrubros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btnrubrosysubrubros.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btnrubrosysubrubros.Location = new System.Drawing.Point(191, 127);
+            this.Btnrubrosysubrubros.Location = new System.Drawing.Point(157, 149);
             this.Btnrubrosysubrubros.Name = "Btnrubrosysubrubros";
-            this.Btnrubrosysubrubros.Size = new System.Drawing.Size(164, 100);
+            this.Btnrubrosysubrubros.Size = new System.Drawing.Size(133, 78);
             this.Btnrubrosysubrubros.TabIndex = 23;
             this.Btnrubrosysubrubros.Text = "&Rubros";
             this.Btnrubrosysubrubros.UseVisualStyleBackColor = false;
             this.Btnrubrosysubrubros.Click += new System.EventHandler(this.Btnrubrosysubrubros_Click);
+            // 
+            // Btnsubrubros
+            // 
+            this.Btnsubrubros.BackColor = System.Drawing.Color.HotPink;
+            this.Btnsubrubros.FlatAppearance.BorderColor = System.Drawing.Color.Magenta;
+            this.Btnsubrubros.FlatAppearance.BorderSize = 2;
+            this.Btnsubrubros.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.Btnsubrubros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btnsubrubros.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btnsubrubros.Location = new System.Drawing.Point(302, 149);
+            this.Btnsubrubros.Name = "Btnsubrubros";
+            this.Btnsubrubros.Size = new System.Drawing.Size(133, 78);
+            this.Btnsubrubros.TabIndex = 24;
+            this.Btnsubrubros.Text = "&Subrubros";
+            this.Btnsubrubros.UseVisualStyleBackColor = false;
+            this.Btnsubrubros.Click += new System.EventHandler(this.Btnsubrubros_Click);
             // 
             // Prodyecommercefull
             // 
@@ -181,6 +198,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(914, 384);
             this.ControlBox = false;
+            this.Controls.Add(this.Btnsubrubros);
             this.Controls.Add(this.Btnrubrosysubrubros);
             this.Controls.Add(this.Btnactualizar);
             this.Controls.Add(this.lblsync0);
@@ -213,5 +231,6 @@
         private System.Windows.Forms.Label lblsync0;
         private System.Windows.Forms.Button Btnactualizar;
         private System.Windows.Forms.Button Btnrubrosysubrubros;
+        private System.Windows.Forms.Button Btnsubrubros;
     }
 }

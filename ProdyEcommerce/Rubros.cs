@@ -41,6 +41,7 @@ namespace ProdyEcommercefull
             btngrabar.Enabled = false;
             btnlimpiar.Enabled = false;
             btnsalir.Enabled = true;
+            dgvrubros.Enabled = true;
             dgvrubros.Focus();
         }
 
@@ -92,6 +93,7 @@ namespace ProdyEcommercefull
         private void btnnuevo_Click(object sender, EventArgs e)
         {
             btnlimpiar_Click(null, null);
+            dgvrubros.Enabled = false;
             btnnuevoFuePresionado = true;
             btnmodificarfuepresionado = false;
             txtidrubro.Enabled = true;
@@ -129,7 +131,6 @@ namespace ProdyEcommercefull
             {
                 F.modificarrubros(txtidrubro, txtnombre, cbpublicar);
             }
-            btnlimpiar_Click(null, null);
             Rurbos_Load(sender, e);
             dgvrubros.Focus();
         }

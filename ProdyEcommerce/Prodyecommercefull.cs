@@ -65,5 +65,12 @@ namespace ProdyEcommerce
 
             R.ShowDialog();
         }
+
+        private void Btnsubrubros_Click(object sender, EventArgs e)
+        {
+            ProdyEcommercefull.Subrubros S = new ProdyEcommercefull.Subrubros();
+
+            S.ShowDialog();
+        }
     }
 }

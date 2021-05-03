@@ -146,6 +146,12 @@
     <Compile Include="Rubros.Designer.cs">
       <DependentUpon>Rubros.cs</DependentUpon>
     </Compile>
+    <Compile Include="Subrubros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subrubros.Designer.cs">
+      <DependentUpon>Subrubros.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Busqueda_avanzada.resx">
       <DependentUpon>Busqueda_avanzada.cs</DependentUpon>
     </EmbeddedResource>
@@ -179,6 +185,9 @@
     </Compile>
     <EmbeddedResource Include="Rubros.resx">
       <DependentUpon>Rubros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subrubros.resx">
+      <DependentUpon>Subrubros.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="ProdyEcommerce_TemporaryKey.pfx" />

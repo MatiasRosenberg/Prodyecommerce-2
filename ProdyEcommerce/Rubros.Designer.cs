@@ -70,6 +70,7 @@ namespace ProdyEcommercefull
             // 
             this.txtidrubro.Enabled = false;
             this.txtidrubro.Location = new System.Drawing.Point(90, 20);
+            this.txtidrubro.MaxLength = 4;
             this.txtidrubro.Name = "txtidrubro";
             this.txtidrubro.Size = new System.Drawing.Size(103, 20);
             this.txtidrubro.TabIndex = 2;
@@ -79,6 +80,7 @@ namespace ProdyEcommercefull
             // 
             this.txtnombre.Enabled = false;
             this.txtnombre.Location = new System.Drawing.Point(90, 53);
+            this.txtnombre.MaxLength = 50;
             this.txtnombre.Name = "txtnombre";
             this.txtnombre.Size = new System.Drawing.Size(180, 20);
             this.txtnombre.TabIndex = 3;
