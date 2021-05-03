@@ -56,7 +56,7 @@ namespace ProdyEcommercefull
             }
             else
             {
-                txtidsubrubro.Text = dgvsubrubros.Rows[e.RowIndex].Cells["codigo"].Value.ToString();
+                txtidsubrubro.Text = dgvsubrubros.Rows[e.RowIndex].Cells["Idsubrubro"].Value.ToString();
                 txtnombre.Text = dgvsubrubros.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
             }
         }
@@ -75,7 +75,7 @@ namespace ProdyEcommercefull
 
         private void txtidsubrubrobus_KeyUp(object sender, KeyEventArgs e)
         {
-            cmd = new SqlCommand("Select idsubrubro as Codigo, Nombre from subrubros where idsubrubro like('" + txtidsubrubrobus.Text + "%')", cnn);
+            cmd = new SqlCommand("Select idsubrubro as Idsubrubro, Nombre from subrubros where idsubrubro like('" + txtidsubrubrobus.Text + "%')", cnn);
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -85,7 +85,7 @@ namespace ProdyEcommercefull
 
         private void txtnombrebus_KeyUp(object sender, KeyEventArgs e)
         {
-            cmd = new SqlCommand("Select idsubrubro as Codigo, Nombre from subrubros where nombre like('" + txtnombrebus.Text + "%')", cnn);
+            cmd = new SqlCommand("Select idsubrubro as Idsubrubro, Nombre from subrubros where nombre like('" + txtnombrebus.Text + "%')", cnn);
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
