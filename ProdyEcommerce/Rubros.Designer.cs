@@ -73,6 +73,7 @@ namespace ProdyEcommercefull
             this.txtidrubro.Name = "txtidrubro";
             this.txtidrubro.Size = new System.Drawing.Size(103, 20);
             this.txtidrubro.TabIndex = 2;
+            this.txtidrubro.Leave += new System.EventHandler(this.txtidrubro_Leave);
             // 
             // txtnombre
             // 
@@ -85,6 +86,7 @@ namespace ProdyEcommercefull
             // cbpublicar
             // 
             this.cbpublicar.AutoSize = true;
+            this.cbpublicar.Enabled = false;
             this.cbpublicar.Location = new System.Drawing.Point(90, 80);
             this.cbpublicar.Name = "cbpublicar";
             this.cbpublicar.Size = new System.Drawing.Size(87, 17);
@@ -115,6 +117,7 @@ namespace ProdyEcommercefull
             this.btnnuevo.TabIndex = 6;
             this.btnnuevo.Text = "Nuevo";
             this.btnnuevo.UseVisualStyleBackColor = true;
+            this.btnnuevo.Click += new System.EventHandler(this.btnnuevo_Click);
             // 
             // btnmodificar
             // 
@@ -124,6 +127,7 @@ namespace ProdyEcommercefull
             this.btnmodificar.TabIndex = 7;
             this.btnmodificar.Text = "Modificar";
             this.btnmodificar.UseVisualStyleBackColor = true;
+            this.btnmodificar.Click += new System.EventHandler(this.btnmodificar_Click);
             // 
             // btngrabar
             // 
@@ -134,6 +138,7 @@ namespace ProdyEcommercefull
             this.btngrabar.TabIndex = 8;
             this.btngrabar.Text = "Grabar";
             this.btngrabar.UseVisualStyleBackColor = true;
+            this.btngrabar.Click += new System.EventHandler(this.btngrabar_Click);
             // 
             // btnlimpiar
             // 
@@ -144,6 +149,7 @@ namespace ProdyEcommercefull
             this.btnlimpiar.TabIndex = 9;
             this.btnlimpiar.Text = "Limpiar";
             this.btnlimpiar.UseVisualStyleBackColor = true;
+            this.btnlimpiar.Click += new System.EventHandler(this.btnlimpiar_Click);
             // 
             // btnsalir
             // 

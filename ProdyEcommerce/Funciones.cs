@@ -868,7 +868,77 @@ namespace ProdyEcommerce
             }
         }
 
+        public void Rubroregistrado(TextBox Textbox1)
+        {
+            string query = "Select COUNT(*) from rubros WHERE idrubro = @param";
+            SqlCommand cmd = new SqlCommand(query, cnn);
+            cmd.Parameters.AddWithValue("@param", Textbox1.Text);
 
+            int cant = Convert.ToInt32(cmd.ExecuteScalar());
+
+            if (cant == 0)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("El rubro ya existe");
+                Textbox1.Text = "";
+                Textbox1.Focus();
+                return;
+            }
+        }
+
+        public void publicarwebr(TextBox cajaidarticulo, CheckBox publicarweb)
+        {
+            string CsqlCheck = "select isnull(publicarweb, 0) as publicarweb from rubros where idrubro ='" + cajaidarticulo.Text + "'";
+            cmd = new SqlCommand(CsqlCheck, cnn);
+            SqlDataReader read = cmd.ExecuteReader();
+
+
+            if (read.Read() == true)
+            {
+                publicarweb.Checked = Convert.ToBoolean(read["publicarweb"]);
+            }
+            else
+            {
+                publicarweb.Checked = false;
+            }
+        }
+
+        public void grabarrubros(TextBox idrubro, TextBox nombre, CheckBox cbpucliar)
+        {
+            string insert = "insert into rubros (idrubro, nombre, publicarweb) values (" + "'" + idrubro.Text + "'" + "," + "'" + nombre.Text + "'" + "," + Convert.ToInt16(cbpucliar.Checked) + ")";
+
+            try
+            {
+                cmd = new SqlCommand(insert, cnn);
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("fue grabado con exito");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("No se pudo grabar el rubro:" + ex.ToString());
+            }
+        }
+
+        public void modificarrubros(TextBox idrubro, TextBox nombre, CheckBox cbpublicar)
+        {
+            string update = "update rubros set nombre ='" + nombre.Text + "'" + "," + "publicarweb=" + Convert.ToInt16(cbpublicar.Checked) + "where idrubro='" + idrubro.Text + "'";
+
+            try
+            {
+                cmd = new SqlCommand(update, cnn);
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show("Se modifico correctamente");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("No se pudo modificar el rubro:" + ex.ToString());
+            }
+        }
     }
 }
 
